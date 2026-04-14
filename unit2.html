@@ -41,9 +41,9 @@ body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--tex
 .fw-name{font-size:.88rem;font-weight:700;line-height:1.35;margin-bottom:.3rem}
 .fw-desc{font-size:.75rem;color:var(--muted);line-height:1.5;flex:1}
 .fw-slib{display:inline-block;margin-top:.65rem;font-size:.65rem;font-weight:700;letter-spacing:.04em;background:var(--accent);color:#fff;padding:.22rem .55rem;border-radius:5px;align-self:flex-start}
-.fw-detail{display:none;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem;position:relative;box-shadow:0 12px 40px rgba(0,0,0,.08)}
-.fw-detail.show{display:block;animation:slideIn .3s ease}
-@keyframes slideIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.fw-detail{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem;position:relative;box-shadow:0 12px 40px rgba(0,0,0,.08)}
+
+
 .fw-detail-close{position:absolute;top:1.25rem;right:1.25rem;width:36px;height:36px;border-radius:50%;background:#F1F5F9;border:none;font-size:1.1rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center}
 .fw-detail-close:hover{background:#E2E8F0}
 .fw-detail-slib{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
@@ -65,6 +65,13 @@ body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--tex
 .set-3 .fw-detail{border-color:#D97706}.set-3 .fw-comp-dot{background:#D97706}
 .set-4 .fw-card{border-top-color:#059669}.set-4 .fw-slib{background:#059669}.set-4 .set-dot{background:#059669}
 .set-4 .fw-detail{border-color:#059669}.set-4 .fw-comp-dot{background:#059669}
+
+
+/* ── Modal Overlay ── */
+.fw-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.45);z-index:1000;justify-content:center;align-items:flex-start;padding:3vh 1rem;overflow-y:auto;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.fw-overlay.show{display:flex}
+.fw-detail{display:block;position:relative;max-width:700px;width:100%;margin:0 auto;animation:modalIn .3s ease}
+@keyframes modalIn{from{opacity:0;transform:translateY(-20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 
 .footer{max-width:1200px;margin:0 auto;padding:1.5rem;text-align:center;font-size:.75rem;color:var(--muted);border-top:1px solid var(--border)}
 .footer strong{font-weight:700}
@@ -145,6 +152,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
 </div>
 
+<div class="fw-overlay" id="overlay-d1">
 <div class="fw-detail" id="d1">
   <button class="fw-detail-close" onclick="hideDetail('d1')">&times;</button>
   <div class="fw-detail-slib">Slibrary 5 &mdash; The Five Laws of Disruption</div>
@@ -162,7 +170,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Christensen, C.M. (2016) <em>The Innovator&rsquo;s Dilemma: When New Technologies Cause Great Firms to Fail</em>. Boston, Mass.: Harvard Business Review Press, pp. 30&ndash;53.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d2">
 <div class="fw-detail" id="d2">
   <button class="fw-detail-close" onclick="hideDetail('d2')">&times;</button>
   <div class="fw-detail-slib">Slibrary 5 &mdash; The Five Laws of Disruption</div>
@@ -180,7 +190,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Christensen, C.M. (2016) <em>The Innovator&rsquo;s Dilemma</em>. Boston, Mass.: Harvard Business Review Press, pp. 54&ndash;73.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d3">
 <div class="fw-detail" id="d3">
   <button class="fw-detail-close" onclick="hideDetail('d3')">&times;</button>
   <div class="fw-detail-slib">Slibrary 5 &mdash; The Five Laws of Disruption</div>
@@ -198,7 +210,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Christensen, C.M. (2016) <em>The Innovator&rsquo;s Dilemma</em>. Boston, Mass.: Harvard Business Review Press, pp. 74&ndash;95.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d4">
 <div class="fw-detail" id="d4">
   <button class="fw-detail-close" onclick="hideDetail('d4')">&times;</button>
   <div class="fw-detail-slib">Slibrary 5 &mdash; The Five Laws of Disruption</div>
@@ -216,7 +230,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Christensen, C.M. and Raynor, M.E. (2003) <em>The Innovator&rsquo;s Solution: Creating and Sustaining Successful Growth</em>. Boston, Mass.: Harvard Business School Press, pp. 177&ndash;206.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d5">
 <div class="fw-detail" id="d5">
   <button class="fw-detail-close" onclick="hideDetail('d5')">&times;</button>
   <div class="fw-detail-slib">Slibrary 5 &mdash; The Five Laws of Disruption</div>
@@ -233,6 +249,8 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <div class="fw-ref-label">Reference</div>
     <p>Christensen, C.M. (2016) <em>The Innovator&rsquo;s Dilemma</em>. Boston, Mass.: Harvard Business Review Press, pp. 171&ndash;197.</p>
   </div>
+</div>
+</div>
 </div>
 
 </div>
@@ -286,6 +304,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
 </div>
 
+<div class="fw-overlay" id="overlay-d6">
 <div class="fw-detail" id="d6">
   <button class="fw-detail-close" onclick="hideDetail('d6')">&times;</button>
   <div class="fw-detail-slib">Slibrary 6 &mdash; Entrepreneurial Mindset</div>
@@ -304,7 +323,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Sarasvathy, S.D. (2001) &lsquo;Causation and Effectuation: Toward a Theoretical Shift from Economic Inevitability to Entrepreneurial Contingency&rsquo;, <em>Academy of Management Review</em>, 26(2), pp. 243&ndash;263.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d7">
 <div class="fw-detail" id="d7">
   <button class="fw-detail-close" onclick="hideDetail('d7')">&times;</button>
   <div class="fw-detail-slib">Slibrary 6 &mdash; Entrepreneurial Mindset</div>
@@ -322,7 +343,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Baker, T. and Nelson, R.E. (2005) &lsquo;Creating Something from Nothing: Resource Construction through Entrepreneurial Bricolage&rsquo;, <em>Administrative Science Quarterly</em>, 50(3), pp. 329&ndash;366.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d8">
 <div class="fw-detail" id="d8">
   <button class="fw-detail-close" onclick="hideDetail('d8')">&times;</button>
   <div class="fw-detail-slib">Slibrary 6 &mdash; Entrepreneurial Mindset</div>
@@ -340,7 +363,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Haynie, J.M. and Shepherd, D.A. (2011) &lsquo;Toward a Theory of Discontinuous Career Transition&rsquo;, <em>Entrepreneurship Theory and Practice</em>, 35(5), pp. 817&ndash;844.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d9">
 <div class="fw-detail" id="d9">
   <button class="fw-detail-close" onclick="hideDetail('d9')">&times;</button>
   <div class="fw-detail-slib">Slibrary 6 &mdash; Entrepreneurial Mindset</div>
@@ -358,7 +383,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Chen, C.C., Greene, P.G. and Crick, A. (1998) &lsquo;Does Entrepreneurial Self-Efficacy Distinguish Entrepreneurs from Managers?&rsquo;, <em>Journal of Business Venturing</em>, 13(4), pp. 295&ndash;316.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d10">
 <div class="fw-detail" id="d10">
   <button class="fw-detail-close" onclick="hideDetail('d10')">&times;</button>
   <div class="fw-detail-slib">Slibrary 6 &mdash; Entrepreneurial Mindset</div>
@@ -375,6 +402,8 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <div class="fw-ref-label">Reference</div>
     <p>Shane, S. (2000) &lsquo;Prior Knowledge and the Discovery of Entrepreneurial Opportunities&rsquo;, <em>Organization Science</em>, 11(4), pp. 448&ndash;469.</p>
   </div>
+</div>
+</div>
 </div>
 
 </div>
@@ -428,6 +457,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
 </div>
 
+<div class="fw-overlay" id="overlay-d11">
 <div class="fw-detail" id="d11">
   <button class="fw-detail-close" onclick="hideDetail('d11')">&times;</button>
   <div class="fw-detail-slib">Slibrary 7 &mdash; Strategic Responses to Disruption</div>
@@ -445,7 +475,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Christensen, C.M. and Raynor, M.E. (2003) <em>The Innovator&rsquo;s Solution</em>. Boston, Mass.: Harvard Business School Press, pp. 177&ndash;206.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d12">
 <div class="fw-detail" id="d12">
   <button class="fw-detail-close" onclick="hideDetail('d12')">&times;</button>
   <div class="fw-detail-slib">Slibrary 7 &mdash; Strategic Responses to Disruption</div>
@@ -463,7 +495,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Moore, G.A. (2014) <em>Crossing the Chasm: Marketing and Selling Disruptive Products to Mainstream Customers</em>. 3rd edn. New York: HarperBusiness.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d13">
 <div class="fw-detail" id="d13">
   <button class="fw-detail-close" onclick="hideDetail('d13')">&times;</button>
   <div class="fw-detail-slib">Slibrary 7 &mdash; Strategic Responses to Disruption</div>
@@ -481,7 +515,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Moore, G.A. (2014) <em>Crossing the Chasm</em>. 3rd edn. New York: HarperBusiness, pp. 108&ndash;132.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d14">
 <div class="fw-detail" id="d14">
   <button class="fw-detail-close" onclick="hideDetail('d14')">&times;</button>
   <div class="fw-detail-slib">Slibrary 7 &mdash; Strategic Responses to Disruption</div>
@@ -499,7 +535,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Charitou, C.D. and Markides, C.C. (2003) &lsquo;Responses to Disruptive Strategic Innovation&rsquo;, <em>MIT Sloan Management Review</em>, 44(2), pp. 55&ndash;63.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d15">
 <div class="fw-detail" id="d15">
   <button class="fw-detail-close" onclick="hideDetail('d15')">&times;</button>
   <div class="fw-detail-slib">Slibrary 7 &mdash; Strategic Responses to Disruption</div>
@@ -516,6 +554,8 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <div class="fw-ref-label">Reference</div>
     <p>Moore, G.A. (2014) <em>Crossing the Chasm</em>. 3rd edn. New York: HarperBusiness, pp. 67&ndash;95.</p>
   </div>
+</div>
+</div>
 </div>
 
 </div>
@@ -569,6 +609,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
 </div>
 
+<div class="fw-overlay" id="overlay-d16">
 <div class="fw-detail" id="d16">
   <button class="fw-detail-close" onclick="hideDetail('d16')">&times;</button>
   <div class="fw-detail-slib">Slibrary 8 &mdash; Disruption in Context</div>
@@ -586,7 +627,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Soltanifar, M., Hughes, M. and G&ouml;cke, L. (2021) <em>Digital Entrepreneurship: Impact on Business and Society</em>. Cham: Springer, pp. 1&ndash;23.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d17">
 <div class="fw-detail" id="d17">
   <button class="fw-detail-close" onclick="hideDetail('d17')">&times;</button>
   <div class="fw-detail-slib">Slibrary 8 &mdash; Disruption in Context</div>
@@ -604,7 +647,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Blind, K. (2012) &lsquo;The Influence of Regulations on Innovation&rsquo;, <em>Research Policy</em>, 41(2), pp. 391&ndash;407.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d18">
 <div class="fw-detail" id="d18">
   <button class="fw-detail-close" onclick="hideDetail('d18')">&times;</button>
   <div class="fw-detail-slib">Slibrary 8 &mdash; Disruption in Context</div>
@@ -622,7 +667,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Holt, D.B. (2004) <em>How Brands Become Icons: The Principles of Cultural Branding</em>. Boston, Mass.: Harvard Business School Press.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d19">
 <div class="fw-detail" id="d19">
   <button class="fw-detail-close" onclick="hideDetail('d19')">&times;</button>
   <div class="fw-detail-slib">Slibrary 8 &mdash; Disruption in Context</div>
@@ -640,7 +687,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Schaltegger, S., L&uuml;deke-Freund, F. and Hansen, E.G. (2012) &lsquo;Business Cases for Sustainability&rsquo;, <em>International Journal of Innovation and Sustainable Development</em>, 6(2), pp. 95&ndash;119.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d20">
 <div class="fw-detail" id="d20">
   <button class="fw-detail-close" onclick="hideDetail('d20')">&times;</button>
   <div class="fw-detail-slib">Slibrary 8 &mdash; Disruption in Context</div>
@@ -658,6 +707,8 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Parker, G., Van Alstyne, M. and Choudary, S.P. (2016) <em>Platform Revolution</em>. New York: W.W. Norton, pp. 1&ndash;28.</p>
   </div>
 </div>
+</div>
+</div>
 
 </div>
 
@@ -668,17 +719,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) &middot; Unit 2: The Innovator&rsquo;s Dilemma
 </footer>
 
-<script>
-let openDetail=null;
-function showDetail(id){
-  if(openDetail&&openDetail!==id){document.getElementById(openDetail).classList.remove('show')}
-  const el=document.getElementById(id);
-  el.classList.toggle('show');
-  openDetail=el.classList.contains('show')?id:null;
-  if(openDetail){el.scrollIntoView({behavior:'smooth',block:'nearest'})}
-}
-function hideDetail(id){document.getElementById(id).classList.remove('show');openDetail=null}
-</script>
+
 
 <script>
 // Disable right-click context menu
@@ -696,6 +737,24 @@ document.addEventListener('dragstart',function(e){e.preventDefault();return fals
 // Disable copy/cut
 document.addEventListener('copy',function(e){e.preventDefault();return false});
 document.addEventListener('cut',function(e){e.preventDefault();return false});
+</script>
+<script>
+let openDetail=null;
+function showDetail(id){
+  // Close any open detail
+  if(openDetail){document.getElementById('overlay-'+openDetail).classList.remove('show');openDetail=null}
+  const overlay=document.getElementById('overlay-'+id);
+  if(overlay){overlay.classList.add('show');openDetail=id;document.body.style.overflow='hidden'}
+}
+function hideDetail(id){
+  const overlay=document.getElementById('overlay-'+id);
+  if(overlay){overlay.classList.remove('show')}
+  openDetail=null;document.body.style.overflow=''
+}
+// Close on overlay background click
+document.addEventListener('click',function(e){if(e.target.classList.contains('fw-overlay')){hideDetail(openDetail)}});
+// Close on Escape key
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&openDetail){hideDetail(openDetail)}});
 </script>
 </body>
 </html>

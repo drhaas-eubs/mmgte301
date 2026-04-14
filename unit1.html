@@ -68,9 +68,9 @@ body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--tex
 .fw-desc{font-size:.75rem;color:var(--muted);line-height:1.5;flex:1}
 .fw-slib{display:inline-block;margin-top:.65rem;font-size:.65rem;font-weight:700;letter-spacing:.04em;background:var(--accent);color:#fff;padding:.22rem .55rem;border-radius:5px;align-self:flex-start}
 
-.fw-detail{display:none;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem 2rem 1.75rem;margin-bottom:1.5rem;position:relative;box-shadow:0 12px 40px rgba(0,0,0,.08)}
-.fw-detail.show{display:block;animation:slideIn .3s ease}
-@keyframes slideIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.fw-detail{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem 2rem 1.75rem;margin-bottom:1.5rem;position:relative;box-shadow:0 12px 40px rgba(0,0,0,.08)}
+
+
 .fw-detail-close{position:absolute;top:1.25rem;right:1.25rem;width:36px;height:36px;border-radius:50%;background:#F1F5F9;border:none;font-size:1.1rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
 .fw-detail-close:hover{background:#E2E8F0;color:var(--text)}
 .fw-detail-slib{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
@@ -136,6 +136,13 @@ body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--tex
 .set-4 .fw-detail{border-color:var(--s4)}
 
 .set-4 .fw-comp-dot{background:var(--s4)}
+
+
+/* ── Modal Overlay ── */
+.fw-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.45);z-index:1000;justify-content:center;align-items:flex-start;padding:3vh 1rem;overflow-y:auto;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.fw-overlay.show{display:flex}
+.fw-detail{display:block;position:relative;max-width:700px;width:100%;margin:0 auto;animation:modalIn .3s ease}
+@keyframes modalIn{from{opacity:0;transform:translateY(-20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 
 .footer{max-width:1200px;margin:0 auto;padding:1.5rem;text-align:center;font-size:.75rem;color:var(--muted);border-top:1px solid var(--border)}
 .footer strong{font-weight:700}
@@ -314,6 +321,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
 <!-- ════════════════════════════════════════════════ -->
 <!-- SLIBRARY 2 — Product & Platform Life Cycles     -->
 
+<div class="fw-overlay" id="overlay-d1">
 <div class="fw-detail" id="d1">
   <button class="fw-detail-close" onclick="hideDetail('d1')">&times;</button>
   <div class="fw-detail-slib">Slibrary 1 &mdash; Innovation Foundations</div>
@@ -331,7 +339,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Christensen, C.M. (2016) <em>The Innovator&rsquo;s Dilemma: When New Technologies Cause Great Firms to Fail</em>. Boston, Mass.: Harvard Business Review Press.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d2">
 <div class="fw-detail" id="d2">
   <button class="fw-detail-close" onclick="hideDetail('d2')">&times;</button>
   <div class="fw-detail-slib">Slibrary 1 &mdash; Innovation Foundations</div>
@@ -348,7 +358,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Christensen, C.M., Raynor, M.E. and McDonald, R. (2015) &lsquo;What Is Disruptive Innovation?&rsquo;, <em>Harvard Business Review</em>, 93(12), pp. 44&ndash;53.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d3">
 <div class="fw-detail" id="d3">
   <button class="fw-detail-close" onclick="hideDetail('d3')">&times;</button>
   <div class="fw-detail-slib">Slibrary 1 &mdash; Innovation Foundations</div>
@@ -366,7 +378,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Foster, R.N. (1986) <em>Innovation: The Attacker&rsquo;s Advantage</em>. New York: Summit Books.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d4">
 <div class="fw-detail" id="d4">
   <button class="fw-detail-close" onclick="hideDetail('d4')">&times;</button>
   <div class="fw-detail-slib">Slibrary 1 &mdash; Innovation Foundations</div>
@@ -384,7 +398,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Henderson, R.M. and Clark, K.B. (1990) &lsquo;Architectural Innovation: The Reconfiguration of Existing Product Technologies and the Failure of Established Firms&rsquo;, <em>Administrative Science Quarterly</em>, 35(1), pp. 9&ndash;30.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d5">
 <div class="fw-detail" id="d5">
   <button class="fw-detail-close" onclick="hideDetail('d5')">&times;</button>
   <div class="fw-detail-slib">Slibrary 1 &mdash; Innovation Foundations</div>
@@ -400,6 +416,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <div class="fw-ref-label">Reference</div>
     <p>Baghai, M., Coley, S. and White, D. (1999) <em>The Alchemy of Growth</em>. London: Orion Business.</p>
   </div>
+</div>
 </div>
 
 <!-- ════════════════════════════════════════════════ -->
@@ -535,6 +552,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
 <!-- ════════════════════════════════════════════════ -->
 <!-- SLIBRARY 3 — Market Dynamics                    -->
 
+<div class="fw-overlay" id="overlay-d6">
 <div class="fw-detail" id="d6">
   <button class="fw-detail-close" onclick="hideDetail('d6')">&times;</button>
   <div class="fw-detail-slib">Slibrary 2 &mdash; Product &amp; Platform Life Cycles</div>
@@ -552,7 +570,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Levitt, T. (1965) &lsquo;Exploit the Product Life Cycle&rsquo;, <em>Harvard Business Review</em>, 43(6), pp. 81&ndash;94.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d7">
 <div class="fw-detail" id="d7">
   <button class="fw-detail-close" onclick="hideDetail('d7')">&times;</button>
   <div class="fw-detail-slib">Slibrary 2 &mdash; Product &amp; Platform Life Cycles</div>
@@ -571,7 +591,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Rogers, E.M. (2003) <em>Diffusion of Innovations</em>. 5th edn. New York: Free Press.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d8">
 <div class="fw-detail" id="d8">
   <button class="fw-detail-close" onclick="hideDetail('d8')">&times;</button>
   <div class="fw-detail-slib">Slibrary 2 &mdash; Product &amp; Platform Life Cycles</div>
@@ -589,7 +611,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Parker, G., Van Alstyne, M. and Choudary, S.P. (2016) <em>Platform Revolution</em>. New York: W.W. Norton.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d9">
 <div class="fw-detail" id="d9">
   <button class="fw-detail-close" onclick="hideDetail('d9')">&times;</button>
   <div class="fw-detail-slib">Slibrary 2 &mdash; Product &amp; Platform Life Cycles</div>
@@ -607,7 +631,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Shapiro, C. and Varian, H.R. (1999) <em>Information Rules</em>. Boston: Harvard Business School Press.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d10">
 <div class="fw-detail" id="d10">
   <button class="fw-detail-close" onclick="hideDetail('d10')">&times;</button>
   <div class="fw-detail-slib">Slibrary 2 &mdash; Product &amp; Platform Life Cycles</div>
@@ -625,6 +651,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <div class="fw-ref-label">Reference</div>
     <p>Fenn, J. and Raskino, M. (2008) <em>Mastering the Hype Cycle</em>. Boston: Harvard Business Press.</p>
   </div>
+</div>
 </div>
 
 <!-- ════════════════════════════════════════════════ -->
@@ -764,6 +791,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
 <!-- ════════════════════════════════════════════════ -->
 <!-- SLIBRARY 4 — Innovation Strategy                -->
 
+<div class="fw-overlay" id="overlay-d11">
 <div class="fw-detail" id="d11">
   <button class="fw-detail-close" onclick="hideDetail('d11')">&times;</button>
   <div class="fw-detail-slib">Slibrary 3 &mdash; Market Dynamics</div>
@@ -781,7 +809,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Schumpeter, J.A. (1942) <em>Capitalism, Socialism and Democracy</em>. New York: Harper &amp; Brothers.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d12">
 <div class="fw-detail" id="d12">
   <button class="fw-detail-close" onclick="hideDetail('d12')">&times;</button>
   <div class="fw-detail-slib">Slibrary 3 &mdash; Market Dynamics</div>
@@ -799,7 +829,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Christensen, C.M., Hall, T., Dillon, K. and Duncan, D.S. (2016) &lsquo;Know Your Customers&rsquo; &ldquo;Jobs to Be Done&rdquo;&rsquo;, <em>Harvard Business Review</em>, 94(9), pp. 54&ndash;62.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d13">
 <div class="fw-detail" id="d13">
   <button class="fw-detail-close" onclick="hideDetail('d13')">&times;</button>
   <div class="fw-detail-slib">Slibrary 3 &mdash; Market Dynamics</div>
@@ -817,7 +849,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Kim, W.C. and Mauborgne, R. (2015) <em>Blue Ocean Strategy</em>. Expanded edn. Boston: Harvard Business Review Press.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d14">
 <div class="fw-detail" id="d14">
   <button class="fw-detail-close" onclick="hideDetail('d14')">&times;</button>
   <div class="fw-detail-slib">Slibrary 3 &mdash; Market Dynamics</div>
@@ -835,7 +869,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Lieberman, M.B. and Montgomery, D.B. (1988) &lsquo;First-Mover Advantages&rsquo;, <em>Strategic Management Journal</em>, 9(S1), pp. 41&ndash;58.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d15">
 <div class="fw-detail" id="d15">
   <button class="fw-detail-close" onclick="hideDetail('d15')">&times;</button>
   <div class="fw-detail-slib">Slibrary 3 &mdash; Market Dynamics</div>
@@ -853,6 +889,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <div class="fw-ref-label">Reference</div>
     <p>Porter, M.E. (2008) &lsquo;The Five Competitive Forces That Shape Strategy&rsquo;, <em>Harvard Business Review</em>, 86(1), pp. 78&ndash;93.</p>
   </div>
+</div>
 </div>
 
 <!-- ════════════════════════════════════════════════ -->
@@ -1001,6 +1038,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
 
 <!-- Detail panels for Set 4 -->
 
+<div class="fw-overlay" id="overlay-d16">
 <div class="fw-detail" id="d16">
   <button class="fw-detail-close" onclick="hideDetail('d16')">&times;</button>
   <div class="fw-detail-slib">Slibrary 4 &mdash; Innovation Strategy</div>
@@ -1018,7 +1056,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Ries, E. (2011) <em>The Lean Startup</em>. New York: Crown Business.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d17">
 <div class="fw-detail" id="d17">
   <button class="fw-detail-close" onclick="hideDetail('d17')">&times;</button>
   <div class="fw-detail-slib">Slibrary 4 &mdash; Innovation Strategy</div>
@@ -1036,7 +1076,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Osterwalder, A. and Pigneur, Y. (2010) <em>Business Model Generation</em>. Hoboken, NJ: John Wiley &amp; Sons.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d18">
 <div class="fw-detail" id="d18">
   <button class="fw-detail-close" onclick="hideDetail('d18')">&times;</button>
   <div class="fw-detail-slib">Slibrary 4 &mdash; Innovation Strategy</div>
@@ -1054,7 +1096,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Osterwalder, A., Pigneur, Y., Bernarda, G. and Smith, A. (2014) <em>Value Proposition Design</em>. Hoboken, NJ: John Wiley &amp; Sons.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d19">
 <div class="fw-detail" id="d19">
   <button class="fw-detail-close" onclick="hideDetail('d19')">&times;</button>
   <div class="fw-detail-slib">Slibrary 4 &mdash; Innovation Strategy</div>
@@ -1072,7 +1116,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>O&rsquo;Reilly, C.A. and Tushman, M.L. (2016) <em>Lead and Disrupt</em>. Stanford, CA: Stanford Business Books.</p>
   </div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d20">
 <div class="fw-detail" id="d20">
   <button class="fw-detail-close" onclick="hideDetail('d20')">&times;</button>
   <div class="fw-detail-slib">Slibrary 4 &mdash; Innovation Strategy</div>
@@ -1090,6 +1136,8 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <p>Nagji, B. and Tuff, G. (2012) &lsquo;Managing Your Innovation Portfolio&rsquo;, <em>Harvard Business Review</em>, 90(5), pp. 66&ndash;74.</p>
   </div>
 </div>
+</div>
+</div>
 
 </div>
 
@@ -1100,20 +1148,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) &middot; Unit 1: Fundamentals of Innovation
 </footer>
 
-<script>
-let openDetail=null;
-function showDetail(id){
-  if(openDetail&&openDetail!==id){document.getElementById(openDetail).classList.remove('show')}
-  const el=document.getElementById(id);
-  el.classList.toggle('show');
-  openDetail=el.classList.contains('show')?id:null;
-  if(openDetail){el.scrollIntoView({behavior:'smooth',block:'nearest'})}
-}
-function hideDetail(id){
-  document.getElementById(id).classList.remove('show');
-  openDetail=null;
-}
-</script>
+
 
 <script>
 // Disable right-click context menu
@@ -1131,6 +1166,24 @@ document.addEventListener('dragstart',function(e){e.preventDefault();return fals
 // Disable copy/cut
 document.addEventListener('copy',function(e){e.preventDefault();return false});
 document.addEventListener('cut',function(e){e.preventDefault();return false});
+</script>
+<script>
+let openDetail=null;
+function showDetail(id){
+  // Close any open detail
+  if(openDetail){document.getElementById('overlay-'+openDetail).classList.remove('show');openDetail=null}
+  const overlay=document.getElementById('overlay-'+id);
+  if(overlay){overlay.classList.add('show');openDetail=id;document.body.style.overflow='hidden'}
+}
+function hideDetail(id){
+  const overlay=document.getElementById('overlay-'+id);
+  if(overlay){overlay.classList.remove('show')}
+  openDetail=null;document.body.style.overflow=''
+}
+// Close on overlay background click
+document.addEventListener('click',function(e){if(e.target.classList.contains('fw-overlay')){hideDetail(openDetail)}});
+// Close on Escape key
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&openDetail){hideDetail(openDetail)}});
 </script>
 </body>
 </html>

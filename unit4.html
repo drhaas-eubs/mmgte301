@@ -28,9 +28,9 @@ body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--tex
 .fw-thumb{height:130px;display:flex;align-items:center;justify-content:center;padding:1rem;background:#fff}
 .fw-thumb svg{width:100%;height:100%;max-width:180px;max-height:110px}
 .fw-body{padding:.85rem 1rem 1rem;flex:1;display:flex;flex-direction:column}.fw-name{font-size:.88rem;font-weight:700;line-height:1.35;margin-bottom:.3rem}.fw-desc{font-size:.75rem;color:var(--muted);line-height:1.5;flex:1}.fw-slib{display:inline-block;margin-top:.65rem;font-size:.65rem;font-weight:700;letter-spacing:.04em;background:var(--accent);color:#fff;padding:.22rem .55rem;border-radius:5px;align-self:flex-start}
-.fw-detail{display:none;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem;position:relative;box-shadow:0 12px 40px rgba(0,0,0,.08)}
-.fw-detail.show{display:block;animation:slideIn .3s ease}
-@keyframes slideIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.fw-detail{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem;position:relative;box-shadow:0 12px 40px rgba(0,0,0,.08)}
+
+
 .fw-detail-close{position:absolute;top:1.25rem;right:1.25rem;width:36px;height:36px;border-radius:50%;background:#F1F5F9;border:none;font-size:1.1rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center}.fw-detail-close:hover{background:#E2E8F0}
 .fw-detail-slib{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
 .fw-detail h3{font-size:1.4rem;font-weight:700;margin-bottom:1rem;padding-right:2.5rem;line-height:1.3}
@@ -46,6 +46,13 @@ body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--tex
 .set-3 .fw-detail{border-color:#D97706}.set-3 .fw-comp-dot{background:#D97706}
 .set-4 .fw-card{border-top-color:#059669}.set-4 .fw-slib{background:#059669}.set-4 .set-dot{background:#059669}
 .set-4 .fw-detail{border-color:#059669}.set-4 .fw-comp-dot{background:#059669}
+
+
+/* ── Modal Overlay ── */
+.fw-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.45);z-index:1000;justify-content:center;align-items:flex-start;padding:3vh 1rem;overflow-y:auto;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.fw-overlay.show{display:flex}
+.fw-detail{display:block;position:relative;max-width:700px;width:100%;margin:0 auto;animation:modalIn .3s ease}
+@keyframes modalIn{from{opacity:0;transform:translateY(-20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 
 .footer{max-width:1200px;margin:0 auto;padding:1.5rem;text-align:center;font-size:.75rem;color:var(--muted);border-top:1px solid var(--border)}.footer strong{font-weight:700}
 @media(max-width:700px){.fw-grid{grid-template-columns:repeat(2,1fr)}}
@@ -123,6 +130,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
 </div>
 
+<div class="fw-overlay" id="overlay-d1">
 <div class="fw-detail" id="d1">
   <button class="fw-detail-close" onclick="hideDetail('d1')">&times;</button>
   <div class="fw-detail-slib">Slibrary 13 &mdash; Business Planning</div>
@@ -138,7 +146,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Hisrich, R.D., Peters, M.P. and Shepherd, D.A. (2020) <em>Entrepreneurship</em>. 11th edn. New York: McGraw-Hill, pp. 198&ndash;232.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d2">
 <div class="fw-detail" id="d2">
   <button class="fw-detail-close" onclick="hideDetail('d2')">&times;</button>
   <div class="fw-detail-slib">Slibrary 13 &mdash; Business Planning</div>
@@ -153,7 +163,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Maurya, A. (2012) <em>Running Lean</em>. 2nd edn. Sebastopol, CA: O&rsquo;Reilly Media.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d3">
 <div class="fw-detail" id="d3">
   <button class="fw-detail-close" onclick="hideDetail('d3')">&times;</button>
   <div class="fw-detail-slib">Slibrary 13 &mdash; Business Planning</div>
@@ -168,7 +180,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Berman, K. and Knight, J. (2013) <em>Financial Intelligence for Entrepreneurs</em>. Boston: Harvard Business Review Press.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d4">
 <div class="fw-detail" id="d4">
   <button class="fw-detail-close" onclick="hideDetail('d4')">&times;</button>
   <div class="fw-detail-slib">Slibrary 13 &mdash; Business Planning</div>
@@ -185,7 +199,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Kawasaki, G. (2015) <em>The Art of the Start 2.0</em>. New York: Portfolio/Penguin.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d5">
 <div class="fw-detail" id="d5">
   <button class="fw-detail-close" onclick="hideDetail('d5')">&times;</button>
   <div class="fw-detail-slib">Slibrary 13 &mdash; Business Planning</div>
@@ -201,6 +217,8 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Ask &rarr; funding amount, use of proceeds, expected milestones</span></div>
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Hisrich, R.D., Peters, M.P. and Shepherd, D.A. (2020) <em>Entrepreneurship</em>. 11th edn. New York: McGraw-Hill, pp. 200&ndash;205.</p></div>
+</div>
+</div>
 </div>
 
 </div>
@@ -254,6 +272,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
 </div>
 
+<div class="fw-overlay" id="overlay-d6">
 <div class="fw-detail" id="d6">
   <button class="fw-detail-close" onclick="hideDetail('d6')">&times;</button>
   <div class="fw-detail-slib">Slibrary 14 &mdash; Funding &amp; Finance</div>
@@ -269,7 +288,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Feld, B. and Mendelson, J. (2019) <em>Venture Deals: Be Smarter Than Your Lawyer and Venture Capitalist</em>. 4th edn. Hoboken, NJ: John Wiley &amp; Sons.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d7">
 <div class="fw-detail" id="d7">
   <button class="fw-detail-close" onclick="hideDetail('d7')">&times;</button>
   <div class="fw-detail-slib">Slibrary 14 &mdash; Funding &amp; Finance</div>
@@ -284,7 +305,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Wasserman, N. (2012) <em>The Founder&rsquo;s Dilemmas: Anticipating and Avoiding the Pitfalls That Can Sink a Startup</em>. Princeton, NJ: Princeton University Press.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d8">
 <div class="fw-detail" id="d8">
   <button class="fw-detail-close" onclick="hideDetail('d8')">&times;</button>
   <div class="fw-detail-slib">Slibrary 14 &mdash; Funding &amp; Finance</div>
@@ -300,7 +323,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Skok, D. (2019) &lsquo;SaaS Metrics 2.0&rsquo;, <em>For Entrepreneurs</em>. Available at: https://www.forentrepreneurs.com.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d9">
 <div class="fw-detail" id="d9">
   <button class="fw-detail-close" onclick="hideDetail('d9')">&times;</button>
   <div class="fw-detail-slib">Slibrary 14 &mdash; Funding &amp; Finance</div>
@@ -315,7 +340,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Graham, P. (2015) &lsquo;Default Alive or Default Dead?&rsquo;, <em>Paul Graham&rsquo;s Essays</em>. Available at: http://www.paulgraham.com.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d10">
 <div class="fw-detail" id="d10">
   <button class="fw-detail-close" onclick="hideDetail('d10')">&times;</button>
   <div class="fw-detail-slib">Slibrary 14 &mdash; Funding &amp; Finance</div>
@@ -329,6 +356,8 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Dilution mechanics &rarr; how each funding round reduces existing shareholders&rsquo; percentages</span></div>
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Feld, B. and Mendelson, J. (2019) <em>Venture Deals</em>. 4th edn. Hoboken, NJ: John Wiley &amp; Sons, pp. 39&ndash;72.</p></div>
+</div>
+</div>
 </div>
 
 </div>
@@ -382,6 +411,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
 </div>
 
+<div class="fw-overlay" id="overlay-d11">
 <div class="fw-detail" id="d11">
   <button class="fw-detail-close" onclick="hideDetail('d11')">&times;</button>
   <div class="fw-detail-slib">Slibrary 15 &mdash; Growth &amp; Scaling</div>
@@ -396,7 +426,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Marmer, M. et al. (2011) <em>Startup Genome Report</em>. Startup Compass Inc.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d12">
 <div class="fw-detail" id="d12">
   <button class="fw-detail-close" onclick="hideDetail('d12')">&times;</button>
   <div class="fw-detail-slib">Slibrary 15 &mdash; Growth &amp; Scaling</div>
@@ -411,7 +443,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Collins, J. (2001) <em>Good to Great: Why Some Companies Make the Leap and Others Don&rsquo;t</em>. New York: HarperBusiness, pp. 164&ndash;187.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d13">
 <div class="fw-detail" id="d13">
   <button class="fw-detail-close" onclick="hideDetail('d13')">&times;</button>
   <div class="fw-detail-slib">Slibrary 15 &mdash; Growth &amp; Scaling</div>
@@ -426,7 +460,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Hisrich, R.D., Peters, M.P. and Shepherd, D.A. (2020) <em>Entrepreneurship</em>. 11th edn. New York: McGraw-Hill, pp. 415&ndash;440.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d14">
 <div class="fw-detail" id="d14">
   <button class="fw-detail-close" onclick="hideDetail('d14')">&times;</button>
   <div class="fw-detail-slib">Slibrary 15 &mdash; Growth &amp; Scaling</div>
@@ -442,7 +478,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Blank, S. (2013) &lsquo;Why the Lean Start-Up Changes Everything&rsquo;, <em>Harvard Business Review</em>, 91(5), pp. 63&ndash;72.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d15">
 <div class="fw-detail" id="d15">
   <button class="fw-detail-close" onclick="hideDetail('d15')">&times;</button>
   <div class="fw-detail-slib">Slibrary 15 &mdash; Growth &amp; Scaling</div>
@@ -457,6 +495,8 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
     <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Referral &rarr; satisfied customers bring new customers (viral coefficient)</span></div>
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>McClure, D. (2007) &lsquo;Startup Metrics for Pirates: AARRR!&rsquo;, <em>500 Startups</em>. Presented at Ignite Seattle.</p></div>
+</div>
+</div>
 </div>
 
 </div>
@@ -510,6 +550,7 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
 </div>
 
+<div class="fw-overlay" id="overlay-d16">
 <div class="fw-detail" id="d16">
   <button class="fw-detail-close" onclick="hideDetail('d16')">&times;</button>
   <div class="fw-detail-slib">Slibrary 16 &mdash; Exit &amp; Value Creation</div>
@@ -525,7 +566,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>DeTienne, D.R. (2010) &lsquo;Entrepreneurial Exit as a Critical Component of the Entrepreneurial Process&rsquo;, <em>Journal of Business Venturing</em>, 25(2), pp. 203&ndash;215.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d17">
 <div class="fw-detail" id="d17">
   <button class="fw-detail-close" onclick="hideDetail('d17')">&times;</button>
   <div class="fw-detail-slib">Slibrary 16 &mdash; Exit &amp; Value Creation</div>
@@ -540,7 +583,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Damodaran, A. (2012) <em>Investment Valuation: Tools and Techniques for Determining the Value of Any Asset</em>. 3rd edn. Hoboken, NJ: John Wiley &amp; Sons.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d18">
 <div class="fw-detail" id="d18">
   <button class="fw-detail-close" onclick="hideDetail('d18')">&times;</button>
   <div class="fw-detail-slib">Slibrary 16 &mdash; Exit &amp; Value Creation</div>
@@ -555,7 +600,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Wright, M. and Robbie, K. (1998) &lsquo;Venture Capital and Private Equity: A Review and Synthesis&rsquo;, <em>Journal of Business Finance &amp; Accounting</em>, 25(5&ndash;6), pp. 521&ndash;570.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d19">
 <div class="fw-detail" id="d19">
   <button class="fw-detail-close" onclick="hideDetail('d19')">&times;</button>
   <div class="fw-detail-slib">Slibrary 16 &mdash; Exit &amp; Value Creation</div>
@@ -570,7 +617,9 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Haspeslagh, P.C. and Jemison, D.B. (1991) <em>Managing Acquisitions: Creating Value Through Corporate Renewal</em>. New York: Free Press.</p></div>
 </div>
+</div>
 
+<div class="fw-overlay" id="overlay-d20">
 <div class="fw-detail" id="d20">
   <button class="fw-detail-close" onclick="hideDetail('d20')">&times;</button>
   <div class="fw-detail-slib">Slibrary 16 &mdash; Exit &amp; Value Creation</div>
@@ -585,15 +634,13 @@ img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-dra
   </div>
   <div class="fw-ref"><div class="fw-ref-label">Reference</div><p>Burgelman, R.A. (1983) &lsquo;Corporate Entrepreneurship and Strategic Management&rsquo;, <em>Management Science</em>, 29(12), pp. 1349&ndash;1364.</p></div>
 </div>
+</div>
+</div>
 
 </div>
 </main>
 <footer class="footer"><strong>MMGTE301</strong> &middot; Disruptive Entrepreneurship &middot; &copy; 2026 Dr. Hildegard Haas<br>Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) &middot; Unit 4: New Venture Process</footer>
-<script>
-let openDetail=null;
-function showDetail(id){if(openDetail&&openDetail!==id){document.getElementById(openDetail).classList.remove('show')}const el=document.getElementById(id);el.classList.toggle('show');openDetail=el.classList.contains('show')?id:null;if(openDetail){el.scrollIntoView({behavior:'smooth',block:'nearest'})}}
-function hideDetail(id){document.getElementById(id).classList.remove('show');openDetail=null}
-</script>
+
 
 <script>
 // Disable right-click context menu
@@ -611,5 +658,23 @@ document.addEventListener('dragstart',function(e){e.preventDefault();return fals
 // Disable copy/cut
 document.addEventListener('copy',function(e){e.preventDefault();return false});
 document.addEventListener('cut',function(e){e.preventDefault();return false});
+</script>
+<script>
+let openDetail=null;
+function showDetail(id){
+  // Close any open detail
+  if(openDetail){document.getElementById('overlay-'+openDetail).classList.remove('show');openDetail=null}
+  const overlay=document.getElementById('overlay-'+id);
+  if(overlay){overlay.classList.add('show');openDetail=id;document.body.style.overflow='hidden'}
+}
+function hideDetail(id){
+  const overlay=document.getElementById('overlay-'+id);
+  if(overlay){overlay.classList.remove('show')}
+  openDetail=null;document.body.style.overflow=''
+}
+// Close on overlay background click
+document.addEventListener('click',function(e){if(e.target.classList.contains('fw-overlay')){hideDetail(openDetail)}});
+// Close on Escape key
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&openDetail){hideDetail(openDetail)}});
 </script>
 </body></html>
