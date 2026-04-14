@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MMGTE301 &mdash; Disruptive Entrepreneurship</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --u1:#2563EB;--u2:#D4872C;--u3:#DC2626;--u4:#059669;
+  --teal:#0D9488;--teal-light:#F0FDFA;--teal-bar:#10B981;
+  --orange:#D97706;
+  --sa:#E74C3C;--cs:#D4872C;--pr:#2980B9;--rf:#8E44AD;
+  --bg:#F1F5F9;--text:#1A1A1A;--muted:#6B7280;--border:#E2E8F0;
+  --navy:#1B2A4A;--card:#FFFFFF;
+}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;margin:0}
+
+/* ── Hero ── */
+.hero{background:var(--navy);color:#fff;padding:3.5rem 2rem 2.5rem;text-align:center}
+.hero-badge{
+  font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--orange);margin-bottom:1.25rem;
+}
+.hero h1{font-size:clamp(2rem,5vw,2.8rem);font-weight:700;line-height:1.15;margin-bottom:.75rem}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.55);margin-bottom:.5rem}
+.hero-copy{font-size:.82rem;color:rgba(255,255,255,.35);font-style:italic;margin-bottom:2rem}
+.stats{display:flex;justify-content:center;gap:3.5rem}
+.stat-num{font-size:2.2rem;font-weight:700;color:var(--teal-bar);line-height:1}
+.stat-label{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.3rem}
+
+/* ── Teal Bar ── */
+.teal-bar{height:6px;background:var(--teal-bar)}
+
+/* ── Main ── */
+.main{max-width:900px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+.section-title{
+  font-size:1.1rem;font-weight:700;color:var(--text);
+  padding-bottom:.6rem;border-bottom:1px solid var(--border);margin-bottom:1.75rem;
+}
+
+/* ── Unit Accordion ── */
+.unit{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  margin-bottom:1.25rem;overflow:hidden;
+}
+.unit-header{
+  display:flex;align-items:center;gap:.75rem;padding:1.25rem 1.5rem;
+  cursor:pointer;user-select:none;
+}
+.unit-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0}
+.unit[data-unit="1"] .unit-dot{background:var(--u1)}
+.unit[data-unit="2"] .unit-dot{background:var(--u2)}
+.unit[data-unit="3"] .unit-dot{background:var(--u3)}
+.unit[data-unit="4"] .unit-dot{background:var(--u4)}
+.unit-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.unit[data-unit="1"] .unit-label{color:var(--u1)}
+.unit[data-unit="2"] .unit-label{color:var(--u2)}
+.unit[data-unit="3"] .unit-label{color:var(--u3)}
+.unit[data-unit="4"] .unit-label{color:var(--u4)}
+.unit-title{font-size:1.05rem;font-weight:700;flex:1}
+.unit-toggle{font-size:1rem;color:var(--muted);transition:transform .3s;flex-shrink:0}
+.unit.open .unit-toggle{transform:rotate(180deg)}
+
+/* ── Unit Body ── */
+.unit-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.unit.open .unit-body{max-height:600px}
+.unit-links{padding:.25rem 1.5rem 1.25rem;display:flex;flex-direction:column;gap:.1rem}
+
+/* ── Resource Links ── */
+.res-link{
+  display:flex;align-items:center;gap:.85rem;padding:.65rem .5rem;
+  border-top:1px solid var(--border);text-decoration:none;color:var(--text);
+  transition:background .2s;
+}
+.res-link:first-child{border-top:none}
+.res-link:hover{background:var(--bg);border-radius:8px}
+.res-badge{
+  width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:.62rem;font-weight:700;color:#fff;flex-shrink:0;letter-spacing:.04em;
+}
+.res-badge.fg{background:var(--u1)}
+.res-badge.sa{background:var(--sa)}
+.res-badge.cs{background:var(--cs)}
+.res-badge.pr{background:var(--pr)}
+.res-badge.rf{background:var(--rf)}
+.unit[data-unit="1"] .res-badge.fg{background:var(--u1)}
+.unit[data-unit="2"] .res-badge.fg{background:var(--u2)}
+.unit[data-unit="3"] .res-badge.fg{background:var(--u3)}
+.unit[data-unit="4"] .res-badge.fg{background:var(--u4)}
+.res-info{flex:1}
+.res-info strong{font-size:.9rem;font-weight:700;display:block;line-height:1.35}
+.res-info span{font-size:.78rem;color:var(--muted)}
+.res-format{
+  font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:#94A3B8;background:#F1F5F9;padding:.25rem .55rem;border-radius:4px;flex-shrink:0;
+}
+
+/* ── Complete Gallery ── */
+.gallery-banner{
+  background:var(--navy);border-radius:14px;padding:1.5rem 2rem;
+  margin-top:2rem;text-align:center;
+}
+.gallery-banner a{
+  font-size:1rem;font-weight:700;color:#fff;text-decoration:none;
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.gallery-banner a:hover{opacity:.8}
+.gallery-dots{display:flex;justify-content:center;gap:6px;margin-top:.65rem}
+.gallery-dots span{width:10px;height:10px;border-radius:50%;opacity:.75}
+
+/* ── Footer ── */
+.footer{
+  max-width:900px;margin:0 auto;padding:1.5rem;
+  text-align:center;font-size:.75rem;color:var(--muted);
+  border-top:1px solid var(--border);
+}
+.footer strong{font-weight:700}
+
+@media(max-width:600px){
+  .hero{padding:2.5rem 1.25rem 2rem}
+  .stats{gap:2rem}
+  .unit-header{padding:1rem 1.25rem}
+  .unit-links{padding:.25rem 1rem 1rem}
+}
+
+/* ── Content Protection ── */
+body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+@media print{body{display:none !important}html::after{content:"Printing is disabled. © 2026 Dr. Hildegard Haas";display:block;padding:3rem;font-size:1.5rem;text-align:center;color:#DC2626;font-family:Arial,sans-serif}}
+img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-drag:none;user-drag:none;pointer-events:none}
+</style>
+</head>
+<body oncopy="return false" oncut="return false" onpaste="return false">
+
+<!-- ═══════ HERO ═══════ -->
+<header class="hero">
+  <div class="hero-badge">MMGTE301 &mdash; Masters Level 7</div>
+  <h1>Disruptive Entrepreneurship</h1>
+  <p class="hero-sub">Interactive Framework Galleries &amp; Course Materials</p>
+  <p class="hero-copy">&copy; 2026 Dr. Hildegard Haas &middot; EU Business School</p>
+  <div class="stats">
+    <div><div class="stat-num">4</div><div class="stat-label">Units</div></div>
+    <div><div class="stat-num">16</div><div class="stat-label">Slibraries</div></div>
+    <div><div class="stat-num">80</div><div class="stat-label">Frameworks</div></div>
+  </div>
+</header>
+<div class="teal-bar"></div>
+
+<!-- ═══════ UNITS ═══════ -->
+<main class="main">
+  <div class="section-title">Course Units</div>
+
+  <!-- Unit 1 -->
+  <div class="unit open" data-unit="1">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-dot"></div>
+      <div class="unit-label">Unit 1</div>
+      <div class="unit-title">Fundamentals of Innovation</div>
+      <div class="unit-toggle">&#9650;</div>
+    </div>
+    <div class="unit-body"><div class="unit-links">
+      <a class="res-link" href="unit1.html">
+        <div class="res-badge fg">FG</div>
+        <div class="res-info"><strong>Framework Gallery</strong><span>20 interactive frameworks &middot; Slibraries 1&ndash;4</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="activities/Unit1_Activities.html">
+        <div class="res-badge sa">SA</div>
+        <div class="res-info"><strong>Session Activities</strong><span>7-phase session guide &mdash; what to do today</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="cases/Unit1_Case.html">
+        <div class="res-badge cs">CS</div>
+        <div class="res-info"><strong>Case: Kodak &mdash; The Giant That Saw It Coming</strong><span>Incumbent with the patent that couldn&rsquo;t save it</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="prereading/Unit1_PreReading.html">
+        <div class="res-badge pr">PR</div>
+        <div class="res-info"><strong>Pre-Reading: Why &ldquo;Good Enough&rdquo; Wins</strong><span>Key framework: Christensen&rsquo;s Disruption S-Curves</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="reflections/Unit1_Reflection.html">
+        <div class="res-badge rf">RF</div>
+        <div class="res-info"><strong>Reflection Prompt</strong><span>3 questions for independent study</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+    </div></div>
+  </div>
+
+  <!-- Unit 2 -->
+  <div class="unit" data-unit="2">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-dot"></div>
+      <div class="unit-label">Unit 2</div>
+      <div class="unit-title">The Innovator&rsquo;s Dilemma</div>
+      <div class="unit-toggle">&#9650;</div>
+    </div>
+    <div class="unit-body"><div class="unit-links">
+      <a class="res-link" href="unit2.html">
+        <div class="res-badge fg">FG</div>
+        <div class="res-info"><strong>Framework Gallery</strong><span>20 interactive frameworks &middot; Slibraries 5&ndash;8</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="activities/Unit2_Activities.html">
+        <div class="res-badge sa">SA</div>
+        <div class="res-info"><strong>Session Activities</strong><span>7-phase session guide &mdash; what to do today</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="cases/Unit2_Case.html">
+        <div class="res-badge cs">CS</div>
+        <div class="res-info"><strong>Case: Blockbuster vs. Netflix &mdash; The Five Laws in Action</strong><span>How rational management led to irrational failure</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="prereading/Unit2_PreReading.html">
+        <div class="res-badge pr">PR</div>
+        <div class="res-info"><strong>Pre-Reading: When Doing Everything Right Is the Wrong Thing</strong><span>Key framework: The Five Laws of Disruption</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="reflections/Unit2_Reflection.html">
+        <div class="res-badge rf">RF</div>
+        <div class="res-info"><strong>Reflection Prompt</strong><span>3 questions for independent study</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+    </div></div>
+  </div>
+
+  <!-- Unit 3 -->
+  <div class="unit" data-unit="3">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-dot"></div>
+      <div class="unit-label">Unit 3</div>
+      <div class="unit-title">Idea Generation</div>
+      <div class="unit-toggle">&#9650;</div>
+    </div>
+    <div class="unit-body"><div class="unit-links">
+      <a class="res-link" href="unit3.html">
+        <div class="res-badge fg">FG</div>
+        <div class="res-info"><strong>Framework Gallery</strong><span>20 interactive frameworks &middot; Slibraries 9&ndash;12</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="activities/Unit3_Activities.html">
+        <div class="res-badge sa">SA</div>
+        <div class="res-info"><strong>Session Activities</strong><span>7-phase session guide &mdash; what to do today</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="cases/Unit3_Case.html">
+        <div class="res-badge cs">CS</div>
+        <div class="res-info"><strong>Case: Airbnb &mdash; From Air Mattresses to a $75 Billion Platform</strong><span>How an idea crossed the chasm</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="prereading/Unit3_PreReading.html">
+        <div class="res-badge pr">PR</div>
+        <div class="res-info"><strong>Pre-Reading: The Chasm Is Real &mdash; Most Ideas Die There</strong><span>Key framework: Rogers&rsquo; Diffusion Curve</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="reflections/Unit3_Reflection.html">
+        <div class="res-badge rf">RF</div>
+        <div class="res-info"><strong>Reflection Prompt</strong><span>3 questions for independent study</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+    </div></div>
+  </div>
+
+  <!-- Unit 4 -->
+  <div class="unit" data-unit="4">
+    <div class="unit-header" onclick="toggleUnit(this)">
+      <div class="unit-dot"></div>
+      <div class="unit-label">Unit 4</div>
+      <div class="unit-title">New Venture Process</div>
+      <div class="unit-toggle">&#9650;</div>
+    </div>
+    <div class="unit-body"><div class="unit-links">
+      <a class="res-link" href="unit4.html">
+        <div class="res-badge fg">FG</div>
+        <div class="res-info"><strong>Framework Gallery</strong><span>20 interactive frameworks &middot; Slibraries 13&ndash;16</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="activities/Unit4_Activities.html">
+        <div class="res-badge sa">SA</div>
+        <div class="res-info"><strong>Session Activities</strong><span>7-phase session guide &mdash; what to do today</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="cases/Unit4_Case.html">
+        <div class="res-badge cs">CS</div>
+        <div class="res-info"><strong>Case: Revolut &mdash; Building a Fintech Unicorn at Speed</strong><span>Venture process from MVP to &pound;33 billion valuation</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="prereading/Unit4_PreReading.html">
+        <div class="res-badge pr">PR</div>
+        <div class="res-info"><strong>Pre-Reading: The Business Plan Is Dead &mdash; Long Live the Business Plan</strong><span>Key framework: Lean Canvas vs. Traditional Plan</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+      <a class="res-link" href="reflections/Unit4_Reflection.html">
+        <div class="res-badge rf">RF</div>
+        <div class="res-info"><strong>Reflection Prompt</strong><span>3 questions for independent study</span></div>
+        <div class="res-format">HTML</div>
+      </a>
+    </div></div>
+  </div>
+
+  <!-- Complete Gallery -->
+  <div class="gallery-banner">
+    <a href="complete.html">&#9632; All 80 Frameworks &mdash; Complete Gallery Wall</a>
+    <div class="gallery-dots">
+      <span style="background:var(--u1)"></span>
+      <span style="background:var(--u2)"></span>
+      <span style="background:var(--u3)"></span>
+      <span style="background:var(--u4)"></span>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <strong>MMGTE301</strong> &middot; Disruptive Entrepreneurship &middot; &copy; 2026 Dr. Hildegard Haas<br>
+  Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) across the entire course
+</footer>
+
+<script>
+function toggleUnit(el){
+  const u=el.closest('.unit');
+  u.classList.toggle('open');
+}
+</script>
+
+<script>
+// Disable right-click context menu
+document.addEventListener('contextmenu',function(e){e.preventDefault();return false});
+
+// Disable keyboard shortcuts (Ctrl+C, Ctrl+S, Ctrl+U, Ctrl+A, Ctrl+P, F12)
+document.addEventListener('keydown',function(e){
+  if(e.ctrlKey&&['c','C','s','S','u','U','a','A','p','P'].includes(e.key)){e.preventDefault();return false}
+  if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['i','I','j','J'].includes(e.key))){e.preventDefault();return false}
+});
+
+// Disable drag
+document.addEventListener('dragstart',function(e){e.preventDefault();return false});
+
+// Disable copy/cut
+document.addEventListener('copy',function(e){e.preventDefault();return false});
+document.addEventListener('cut',function(e){e.preventDefault();return false});
+</script>
+</body>
+</html>

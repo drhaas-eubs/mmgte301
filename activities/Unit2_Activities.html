@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MMGTE301 Unit 2 &mdash; Session Activities</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--accent:#D4872C;--accent-light:#FFF7ED;--accent-dark:#92400E;--bg:#F8FAFC;--text:#1A1A1A;--muted:#6B7280;--border:#E2E8F0;--navy:#1B2A4A;--card:#FFFFFF}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;margin:0}
+.back-bar{background:#F0FDFA;padding:.7rem 0}.back-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.back-link{color:#0D9488;text-decoration:none;font-size:.88rem;font-weight:600;display:inline-flex;align-items:center;gap:.35rem}.back-link:hover{color:#065F46}
+.teal-bar{height:5px;background:#10B981}
+.page-header{background:var(--navy);color:#fff;padding:2.5rem 2rem 2rem}
+.header-inner{max-width:780px;margin:0 auto}
+.header-badge{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#D97706;margin-bottom:.75rem}
+.page-header h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;line-height:1.2;margin-bottom:.5rem}
+.header-sub{font-size:.92rem;color:rgba(255,255,255,.55);margin-bottom:.5rem}
+.header-copy{font-size:.8rem;color:rgba(255,255,255,.3);font-style:italic}
+.main{max-width:780px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.overview{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:2.5rem}
+.overview h2{font-size:1.1rem;font-weight:700;color:var(--accent);margin-bottom:1rem}
+.ov-row{display:flex;align-items:center;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--border);font-size:.85rem}.ov-row:last-child{border-bottom:none}
+.ov-phase{font-weight:700;color:var(--accent);min-width:60px}.ov-name{flex:1}.ov-time{color:var(--muted);font-size:.8rem;min-width:50px;text-align:right}
+.phase{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.75rem;margin-bottom:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.phase-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:1rem;margin-bottom:.75rem}
+.phase h3{font-size:1.15rem;font-weight:700;margin-bottom:.15rem}.phase .time{font-size:.8rem;color:var(--muted);margin-bottom:1rem}.phase p{font-size:.88rem;margin-bottom:.75rem}
+.task{background:#F0FDFA;border-left:3px solid #0D9488;padding:.75rem 1rem;border-radius:0 8px 8px 0;margin:.75rem 0;font-size:.85rem}.task strong{color:#0D9488;font-weight:700}
+.tip{background:#FEFCE8;border:1px solid #FDE68A;border-radius:10px;padding:.75rem 1rem;margin:.75rem 0;font-size:.82rem;color:#78350F}
+.break-bar{display:flex;align-items:center;justify-content:center;gap:.75rem;padding:1rem;margin:1.5rem 0;font-size:.9rem;color:var(--muted)}.break-bar::before,.break-bar::after{content:'';flex:1;height:1px;background:var(--border)}
+.case-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem}
+.case-title{font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+.case-subtitle{font-size:.9rem;color:var(--muted);margin-bottom:1.5rem;font-style:italic}
+.case-body p{font-size:.9rem;margin-bottom:1rem}
+.task-box{background:#F0FDFA;border:1px solid #99F6E4;border-radius:14px;padding:1.5rem;margin:2rem 0}
+.task-box h3{font-size:1.1rem;font-weight:700;color:#0D9488;margin-bottom:.75rem}.task-box p{font-size:.88rem;margin-bottom:.5rem}
+.source-box{background:#F9FAFB;border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;margin-top:2rem;font-size:.82rem;color:var(--muted)}.source-box strong{font-weight:700;color:var(--text)}
+.pr-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem}
+.pr-title{font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+.pr-subtitle{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;font-style:italic}
+.fw-callout{background:var(--accent-light);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:.85rem;color:var(--accent-dark)}.fw-callout strong{font-weight:700}
+.pr-body p{font-size:.9rem;margin-bottom:1.1rem}
+.refs{margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--border)}.refs h3{font-size:1rem;font-weight:700;margin-bottom:.75rem}.refs p{font-size:.82rem;color:var(--muted);margin-bottom:.4rem}
+.rf-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem}
+.rf-title{font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+.rf-subtitle{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem}
+.rf-intro{font-size:.9rem;margin-bottom:2rem;color:var(--muted);font-style:italic}
+.reflection{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;margin-bottom:1.25rem;position:relative}
+.reflection::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:4px 0 0 4px;background:var(--accent)}
+.reflection h3{font-size:1rem;font-weight:700;color:var(--accent-dark);margin-bottom:.75rem}.reflection p{font-size:.88rem;line-height:1.7}
+.footer{max-width:780px;margin:0 auto;padding:1.5rem;text-align:center;font-size:.75rem;color:var(--muted);border-top:1px solid var(--border)}.footer strong{font-weight:700}
+
+/* ── Content Protection ── */
+body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+@media print{body{display:none !important}html::after{content:"Printing is disabled. © 2026 Dr. Hildegard Haas";display:block;padding:3rem;font-size:1.5rem;text-align:center;color:#DC2626;font-family:Arial,sans-serif}}
+img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-drag:none;user-drag:none;pointer-events:none}
+</style>
+</head>
+<body oncopy="return false" oncut="return false" onpaste="return false">
+<div class="back-bar"><div class="back-inner"><a class="back-link" href="../index.html">&larr; Back to Course Overview</a></div></div>
+<div class="teal-bar"></div>
+<header class="page-header"><div class="header-inner">
+  <div class="header-badge">MMGTE301 &middot; Unit 2 &middot; Session Activities</div>
+  <h1>The Innovator&rsquo;s Dilemma</h1>
+  <p class="header-sub">What we do today &mdash; 150 minutes, 7 phases, no slides</p>
+  <p class="header-copy">&copy; 2026 Dr. Hildegard Haas &middot; EU Business School</p>
+</div></header>
+<div class="teal-bar"></div>
+<main class="main">
+<div class="overview"><h2>Session Overview</h2>
+<div class="ov-row"><span class="ov-phase">Phase 1</span><span class="ov-name">The Dilemma Drop</span><span class="ov-time">10 min</span></div>
+<div class="ov-row"><span class="ov-phase">Phase 2</span><span class="ov-name">Gallery Exploration</span><span class="ov-time">20 min</span></div>
+<div class="ov-row"><span class="ov-phase">Phase 3</span><span class="ov-name">Framework Pitch</span><span class="ov-time">15 min</span></div>
+<div class="ov-row"><span class="ov-phase">Phase 4</span><span class="ov-name">Case Deep Dive: Blockbuster</span><span class="ov-time">40 min</span></div>
+<div class="ov-row"><span class="ov-phase">Phase 5</span><span class="ov-name">Board Presentations</span><span class="ov-time">20 min</span></div>
+<div class="ov-row"><span class="ov-phase">&mdash;</span><span class="ov-name">Break</span><span class="ov-time">10 min</span></div>
+<div class="ov-row"><span class="ov-phase">Phase 6</span><span class="ov-name">Second Scenario</span><span class="ov-time">25 min</span></div>
+<div class="ov-row"><span class="ov-phase">Phase 7</span><span class="ov-name">Reflection &amp; Personal Slibrary</span><span class="ov-time">10 min</span></div></div>
+
+<div class="phase"><div class="phase-num">1</div><h3>The Dilemma Drop</h3><div class="time">10 min</div><p>Your facilitator will present a real company that did everything right &mdash; listened to customers, invested in R&amp;D, followed best practices &mdash; and still failed. A paradox, not a lecture.</p><div class="task"><strong>Your task:</strong> Listen. Then sit in silence for 2 minutes. The question is not &ldquo;what did they do wrong?&rdquo; but &ldquo;why was doing everything right the wrong thing to do?&rdquo;</div></div>
+
+<div class="phase"><div class="phase-num">2</div><h3>Gallery Exploration</h3><div class="time">20 min</div><p><strong>Open:</strong> Unit 2 Framework Gallery on your device.</p><p>The gallery contains 20 frameworks across 4 Slibraries (5&ndash;8). Work <strong>in pairs</strong>.</p><div class="task"><strong>Your task:</strong> Find the 3 frameworks that best explain why well-managed companies fail. Click into each one &mdash; read the definition and source. Write down the framework name, Slibrary number, and one sentence explaining why you chose it.</div></div>
+
+<div class="phase"><div class="phase-num">3</div><h3>Framework Pitch</h3><div class="time">15 min</div><p>3&ndash;4 pairs will present their selections to the group.</p><div class="task"><strong>Your task:</strong> Name your 3 frameworks, state which Slibrary each comes from, and explain in one sentence why you chose that combination. You have <strong>90 seconds</strong>.</div></div>
+
+<div class="phase"><div class="phase-num">4</div><h3>Case Deep Dive: Blockbuster</h3><div class="time">40 min</div><p><strong>Blockbuster vs. Netflix: The Five Laws in Action</strong></p><p>You are an external consultant presenting to Blockbuster&rsquo;s board in 2004. Netflix has 4 million subscribers and is growing. Blockbuster has 9,000 stores, $6 billion in revenue, and 84,000 employees. Using frameworks from the gallery, prepare a visual argument.</p><div class="task"><strong>Your task:</strong> Form teams of 4. Using <strong>at least two frameworks</strong> from the gallery, produce a <strong>one-page visual argument</strong>. Your argument must identify which of the Five Laws trapped Blockbuster, and recommend a structural response.</div><div class="tip"><strong>Tip:</strong> The best arguments will connect the RPV Framework to the specific law that explains Blockbuster&rsquo;s paralysis.</div></div>
+
+<div class="phase"><div class="phase-num">5</div><h3>Board Presentations</h3><div class="time">20 min</div><div class="task"><strong>Your task:</strong> Present your visual argument at the whiteboard. You have <strong>90 seconds</strong>. Sketch, point, explain &mdash; then stop.</div></div>
+
+<div class="break-bar">&#9749; Break &mdash; 10 minutes</div>
+
+<div class="phase"><div class="phase-num">6</div><h3>Second Scenario</h3><div class="time">25 min</div><p><em>A Munich-based automotive supplier employs 12,000 people manufacturing precision fuel injection systems. Their engineering is world-class, their margins are 18%, and their top 5 clients account for 80% of revenue. All five clients have announced plans to phase out combustion engines by 2035. How should the board respond?</em></p><div class="task"><strong>Your task:</strong> Return to the gallery. Focus on <strong>Slibraries 7 and 8</strong>. Identify the 2&ndash;3 frameworks most relevant to this scenario. How does the RPV Framework explain why this company cannot simply &ldquo;pivot&rdquo; to electric?</div></div>
+
+<div class="phase"><div class="phase-num">7</div><h3>Reflection &amp; Personal Slibrary</h3><div class="time">10 min</div><p><strong>Individually. No discussion.</strong> Answer three questions in writing:</p><p><strong>Question 1:</strong> Which of the Five Laws do you find most counterintuitive?</p><p><strong>Question 2:</strong> Has your employer ever been trapped by one of these laws? Which one?</p><p><strong>Question 3:</strong> Which framework do you not yet fully understand? Return to the gallery and write a 200-word explanation.</p></div>
+</main>
+<footer class="footer"><strong>MMGTE301</strong> &middot; Disruptive Entrepreneurship &middot; &copy; 2026 Dr. Hildegard Haas<br>&copy; Dr. Hildegard Haas 2026</footer>
+
+<script>
+// Disable right-click context menu
+document.addEventListener('contextmenu',function(e){e.preventDefault();return false});
+
+// Disable keyboard shortcuts (Ctrl+C, Ctrl+S, Ctrl+U, Ctrl+A, Ctrl+P, F12)
+document.addEventListener('keydown',function(e){
+  if(e.ctrlKey&&['c','C','s','S','u','U','a','A','p','P'].includes(e.key)){e.preventDefault();return false}
+  if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['i','I','j','J'].includes(e.key))){e.preventDefault();return false}
+});
+
+// Disable drag
+document.addEventListener('dragstart',function(e){e.preventDefault();return false});
+
+// Disable copy/cut
+document.addEventListener('copy',function(e){e.preventDefault();return false});
+document.addEventListener('cut',function(e){e.preventDefault();return false});
+</script>
+</body>
+</html>

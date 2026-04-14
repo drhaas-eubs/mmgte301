@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MMGTE301 Unit 3 &mdash; The Chasm Is Real &mdash; Most Ideas Die There</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--accent:#DC2626;--accent-light:#FEF2F2;--accent-dark:#991B1B;--bg:#F8FAFC;--text:#1A1A1A;--muted:#6B7280;--border:#E2E8F0;--navy:#1B2A4A;--card:#FFFFFF}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;margin:0}
+.back-bar{background:#F0FDFA;padding:.7rem 0}.back-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.back-link{color:#0D9488;text-decoration:none;font-size:.88rem;font-weight:600;display:inline-flex;align-items:center;gap:.35rem}.back-link:hover{color:#065F46}
+.teal-bar{height:5px;background:#10B981}
+.page-header{background:var(--navy);color:#fff;padding:2.5rem 2rem 2rem}
+.header-inner{max-width:780px;margin:0 auto}
+.header-badge{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#D97706;margin-bottom:.75rem}
+.page-header h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;line-height:1.2;margin-bottom:.5rem}
+.header-sub{font-size:.92rem;color:rgba(255,255,255,.55);margin-bottom:.5rem}
+.header-copy{font-size:.8rem;color:rgba(255,255,255,.3);font-style:italic}
+.main{max-width:780px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.overview{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:2.5rem}
+.overview h2{font-size:1.1rem;font-weight:700;color:var(--accent);margin-bottom:1rem}
+.ov-row{display:flex;align-items:center;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--border);font-size:.85rem}.ov-row:last-child{border-bottom:none}
+.ov-phase{font-weight:700;color:var(--accent);min-width:60px}.ov-name{flex:1}.ov-time{color:var(--muted);font-size:.8rem;min-width:50px;text-align:right}
+.phase{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.75rem;margin-bottom:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.phase-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:1rem;margin-bottom:.75rem}
+.phase h3{font-size:1.15rem;font-weight:700;margin-bottom:.15rem}.phase .time{font-size:.8rem;color:var(--muted);margin-bottom:1rem}.phase p{font-size:.88rem;margin-bottom:.75rem}
+.task{background:#F0FDFA;border-left:3px solid #0D9488;padding:.75rem 1rem;border-radius:0 8px 8px 0;margin:.75rem 0;font-size:.85rem}.task strong{color:#0D9488;font-weight:700}
+.tip{background:#FEFCE8;border:1px solid #FDE68A;border-radius:10px;padding:.75rem 1rem;margin:.75rem 0;font-size:.82rem;color:#78350F}
+.break-bar{display:flex;align-items:center;justify-content:center;gap:.75rem;padding:1rem;margin:1.5rem 0;font-size:.9rem;color:var(--muted)}.break-bar::before,.break-bar::after{content:'';flex:1;height:1px;background:var(--border)}
+.case-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem}
+.case-title{font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+.case-subtitle{font-size:.9rem;color:var(--muted);margin-bottom:1.5rem;font-style:italic}
+.case-body p{font-size:.9rem;margin-bottom:1rem}
+.task-box{background:#F0FDFA;border:1px solid #99F6E4;border-radius:14px;padding:1.5rem;margin:2rem 0}
+.task-box h3{font-size:1.1rem;font-weight:700;color:#0D9488;margin-bottom:.75rem}.task-box p{font-size:.88rem;margin-bottom:.5rem}
+.source-box{background:#F9FAFB;border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;margin-top:2rem;font-size:.82rem;color:var(--muted)}.source-box strong{font-weight:700;color:var(--text)}
+.pr-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem}
+.pr-title{font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+.pr-subtitle{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;font-style:italic}
+.fw-callout{background:var(--accent-light);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:.85rem;color:var(--accent-dark)}.fw-callout strong{font-weight:700}
+.pr-body p{font-size:.9rem;margin-bottom:1.1rem}
+.refs{margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--border)}.refs h3{font-size:1rem;font-weight:700;margin-bottom:.75rem}.refs p{font-size:.82rem;color:var(--muted);margin-bottom:.4rem}
+.rf-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem}
+.rf-title{font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+.rf-subtitle{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem}
+.rf-intro{font-size:.9rem;margin-bottom:2rem;color:var(--muted);font-style:italic}
+.reflection{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;margin-bottom:1.25rem;position:relative}
+.reflection::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:4px 0 0 4px;background:var(--accent)}
+.reflection h3{font-size:1rem;font-weight:700;color:var(--accent-dark);margin-bottom:.75rem}.reflection p{font-size:.88rem;line-height:1.7}
+.footer{max-width:780px;margin:0 auto;padding:1.5rem;text-align:center;font-size:.75rem;color:var(--muted);border-top:1px solid var(--border)}.footer strong{font-weight:700}
+
+/* ── Content Protection ── */
+body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+@media print{body{display:none !important}html::after{content:"Printing is disabled. © 2026 Dr. Hildegard Haas";display:block;padding:3rem;font-size:1.5rem;text-align:center;color:#DC2626;font-family:Arial,sans-serif}}
+img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-drag:none;user-drag:none;pointer-events:none}
+</style>
+</head>
+<body oncopy="return false" oncut="return false" onpaste="return false">
+<div class="back-bar"><div class="back-inner"><a class="back-link" href="../index.html">&larr; Back to Course Overview</a></div></div>
+<div class="teal-bar"></div>
+<header class="page-header"><div class="header-inner">
+  <div class="header-badge">MMGTE301 &middot; Unit 3 &middot; Pre-Reading</div>
+  <h1>Idea Generation</h1>
+  <p class="header-sub">Understanding Diffusion as the Bridge Between Invention and Impact</p>
+  <p class="header-copy">&copy; 2026 Dr. Hildegard Haas &middot; EU Business School</p>
+</div></header>
+<div class="teal-bar"></div>
+<main class="main">
+<div class="pr-label">Pre-Reading</div>
+<div class="pr-title">The Chasm Is Real &mdash; Most Ideas Die There</div>
+<div class="pr-subtitle">Understanding Diffusion as the Bridge Between Invention and Impact</div>
+<div class="fw-callout"><strong>Key Framework: Rogers&rsquo; Diffusion Curve</strong></div>
+<div class="pr-body">
+<p>Having a good idea is not the hard part. The hard part is getting anyone to adopt it. Everett Rogers, an American communication theorist, spent his career studying why some innovations spread rapidly while others stall or die. His answer, published in <em>Diffusion of Innovations</em> (1962, updated to a fifth edition in 2003), remains one of the most cited frameworks in innovation studies.</p>
+<p>Rogers&rsquo; central insight is that adoption is not a single event but a process that unfolds across a population in a predictable bell-curve pattern. The population divides into five groups based on their willingness to adopt: Innovators (2.5%), Early Adopters (13.5%), Early Majority (34%), Late Majority (34%), and Laggards (16%). Each group has fundamentally different motivations, risk tolerances, and decision criteria.</p>
+<p>The practical implication is that the marketing and product strategy that works for early adopters will fail with the early majority. Visionaries buy potential; pragmatists buy proof. Visionaries tolerate bugs; pragmatists demand reliability. This gap between early adopters and the early majority is what Geoffrey Moore famously called &ldquo;the chasm&rdquo; &mdash; and it is where most innovative products die.</p>
+<p>Moore&rsquo;s contribution was to show that crossing the chasm requires a fundamentally different strategy: target a single niche segment, build a complete &ldquo;whole product&rdquo; for that segment, and use that reference base to expand into adjacent segments. The bowling alley, not the mass market, is where the early majority is won.</p>
+<p>For entrepreneurs, the diffusion curve is not merely descriptive. It is a strategic planning tool. It tells you who your first customers should be, what product they need, what evidence will convince the next group, and how long the journey from invention to mainstream adoption will take. Most venture failures are not product failures &mdash; they are diffusion failures.</p>
+</div>
+<div class="refs"><h3>References</h3>
+<p>Rogers, E.M. (2003) <em>Diffusion of Innovations</em>. 5th edn. New York: Free Press.</p>
+<p>Moore, G.A. (2014) <em>Crossing the Chasm: Marketing and Selling Disruptive Products to Mainstream Customers</em>. 3rd edn. New York: HarperBusiness.</p>
+<p>Ries, E. (2011) <em>The Lean Startup</em>. New York: Crown Business.</p></div>
+</main>
+<footer class="footer"><strong>MMGTE301</strong> &middot; Disruptive Entrepreneurship &middot; &copy; 2026 Dr. Hildegard Haas<br>&copy; Dr. Hildegard Haas 2026</footer>
+
+<script>
+// Disable right-click context menu
+document.addEventListener('contextmenu',function(e){e.preventDefault();return false});
+
+// Disable keyboard shortcuts (Ctrl+C, Ctrl+S, Ctrl+U, Ctrl+A, Ctrl+P, F12)
+document.addEventListener('keydown',function(e){
+  if(e.ctrlKey&&['c','C','s','S','u','U','a','A','p','P'].includes(e.key)){e.preventDefault();return false}
+  if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['i','I','j','J'].includes(e.key))){e.preventDefault();return false}
+});
+
+// Disable drag
+document.addEventListener('dragstart',function(e){e.preventDefault();return false});
+
+// Disable copy/cut
+document.addEventListener('copy',function(e){e.preventDefault();return false});
+document.addEventListener('cut',function(e){e.preventDefault();return false});
+</script>
+</body>
+</html>

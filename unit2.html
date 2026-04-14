@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MMGTE301 Unit 2 &mdash; The Innovator&rsquo;s Dilemma</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --accent:#D4872C;--accent-light:#FFF7ED;--accent-dark:#92400E;
+  --bg:#F8FAFC;--text:#1A1A1A;--muted:#6B7280;--border:#E2E8F0;
+  --navy:#1B2A4A;--card:#FFFFFF;
+}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;margin:0}
+.back-bar{background:#F0FDFA;padding:.7rem 0}
+.back-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.back-link{color:#0D9488;text-decoration:none;font-size:.88rem;font-weight:600;display:inline-flex;align-items:center;gap:.35rem}
+.back-link:hover{color:#065F46}
+.teal-bar{height:5px;background:#10B981}
+.page-header{background:var(--navy);color:#fff;padding:2.5rem 2rem 2rem}
+.header-inner{max-width:1200px;margin:0 auto}
+.header-badge{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#D97706;margin-bottom:.75rem}
+.page-header h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;line-height:1.2;margin-bottom:.5rem}
+.header-sub{font-size:.92rem;color:rgba(255,255,255,.55);margin-bottom:.5rem}
+.header-copy{font-size:.8rem;color:rgba(255,255,255,.3);font-style:italic}
+.header-stats{display:flex;gap:2.5rem;margin-top:1.5rem}
+.hs{text-align:left}
+.hs-num{font-size:1.8rem;font-weight:700;color:#10B981;line-height:1}
+.hs-label{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.25rem}
+.main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.set-header{display:flex;align-items:center;gap:.65rem;margin:2.5rem 0 1.1rem}
+.set-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0}
+.set-title{font-size:1.05rem;font-weight:700}
+.set-count{font-size:.75rem;color:var(--muted);background:#F1F5F9;padding:.25rem .7rem;border-radius:100px;font-weight:500}
+.fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.9rem;margin-bottom:.5rem}
+.fw-card{background:var(--card);border:1px solid var(--border);border-top:3.5px solid var(--accent);border-radius:10px;overflow:hidden;cursor:pointer;transition:box-shadow .25s,transform .2s;display:flex;flex-direction:column}
+.fw-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
+.fw-thumb{height:130px;display:flex;align-items:center;justify-content:center;padding:1rem;background:#fff}
+.fw-thumb svg{width:100%;height:100%;max-width:180px;max-height:110px}
+.fw-body{padding:.85rem 1rem 1rem;flex:1;display:flex;flex-direction:column}
+.fw-name{font-size:.88rem;font-weight:700;line-height:1.35;margin-bottom:.3rem}
+.fw-desc{font-size:.75rem;color:var(--muted);line-height:1.5;flex:1}
+.fw-slib{display:inline-block;margin-top:.65rem;font-size:.65rem;font-weight:700;letter-spacing:.04em;background:var(--accent);color:#fff;padding:.22rem .55rem;border-radius:5px;align-self:flex-start}
+.fw-detail{display:none;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem;position:relative;box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.fw-detail.show{display:block;animation:slideIn .3s ease}
+@keyframes slideIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.fw-detail-close{position:absolute;top:1.25rem;right:1.25rem;width:36px;height:36px;border-radius:50%;background:#F1F5F9;border:none;font-size:1.1rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.fw-detail-close:hover{background:#E2E8F0}
+.fw-detail-slib{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.fw-detail h3{font-size:1.4rem;font-weight:700;margin-bottom:1rem;padding-right:2.5rem;line-height:1.3}
+.fw-defn{border-left:4px solid #DC2626;padding:.9rem 1.15rem;margin-bottom:1rem;font-size:.92rem;font-weight:600;font-style:italic;line-height:1.6;color:#DC2626}
+.fw-subdesc{font-size:.88rem;color:var(--muted);margin-bottom:1.25rem}
+.fw-components{margin-bottom:1.5rem}
+.fw-comp-item{padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.88rem;line-height:1.6;display:flex;align-items:baseline;gap:.6rem}
+.fw-comp-item:last-child{border-bottom:none}
+.fw-comp-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:.45rem}
+.fw-ref{border-left:4px solid #0D9488;padding:.9rem 1.15rem;border-radius:0 10px 10px 0;margin-top:1rem;background:#F0FDFA}
+.fw-ref-label{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#0D9488;margin-bottom:.35rem}
+.fw-ref p{font-size:.82rem;color:#1A1A1A;line-height:1.6}
+.set-1 .fw-card{border-top-color:#2563EB}.set-1 .fw-slib{background:#2563EB}.set-1 .set-dot{background:#2563EB}
+.set-1 .fw-detail{border-color:#2563EB}.set-1 .fw-comp-dot{background:#2563EB}
+.set-2 .fw-card{border-top-color:#DC2626}.set-2 .fw-slib{background:#DC2626}.set-2 .set-dot{background:#DC2626}
+.set-2 .fw-detail{border-color:#DC2626}.set-2 .fw-comp-dot{background:#DC2626}
+.set-3 .fw-card{border-top-color:#D97706}.set-3 .fw-slib{background:#D97706}.set-3 .set-dot{background:#D97706}
+.set-3 .fw-detail{border-color:#D97706}.set-3 .fw-comp-dot{background:#D97706}
+.set-4 .fw-card{border-top-color:#059669}.set-4 .fw-slib{background:#059669}.set-4 .set-dot{background:#059669}
+.set-4 .fw-detail{border-color:#059669}.set-4 .fw-comp-dot{background:#059669}
+
+.footer{max-width:1200px;margin:0 auto;padding:1.5rem;text-align:center;font-size:.75rem;color:var(--muted);border-top:1px solid var(--border)}
+.footer strong{font-weight:700}
+@media(max-width:700px){.fw-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.fw-grid{grid-template-columns:1fr}}
+
+/* ── Content Protection ── */
+body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+@media print{body{display:none !important}html::after{content:"Printing is disabled. © 2026 Dr. Hildegard Haas";display:block;padding:3rem;font-size:1.5rem;text-align:center;color:#DC2626;font-family:Arial,sans-serif}}
+img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-drag:none;user-drag:none;pointer-events:none}
+</style>
+</head>
+<body oncopy="return false" oncut="return false" onpaste="return false">
+
+<div class="back-bar"><div class="back-inner"><a class="back-link" href="index.html">&larr; Back to Course Overview</a></div></div>
+<div class="teal-bar"></div>
+<header class="page-header"><div class="header-inner">
+  <div class="header-badge">MMGTE301 &middot; Unit 2</div>
+  <h1>The Innovator&rsquo;s Dilemma</h1>
+  <p class="header-sub">Select any framework to explore it in detail</p>
+  <p class="header-copy">&copy; 2026 Dr. Hildegard Haas</p>
+  <div class="header-stats">
+    <div class="hs"><div class="hs-num">4</div><div class="hs-label">Slibraries</div></div>
+    <div class="hs"><div class="hs-num">20</div><div class="hs-label">Frameworks</div></div>
+    <div class="hs"><div class="hs-num">5&ndash;8</div><div class="hs-label">Set Range</div></div>
+  </div>
+</div></header>
+<div class="teal-bar"></div>
+
+<main class="main">
+
+<div class="set-1">
+<div class="set-header">
+  <div class="set-dot"></div>
+  <div class="set-title">Set 5 &mdash; The Five Laws of Disruption</div>
+  <div class="set-count">5 frameworks</div>
+</div>
+<div class="fw-grid">
+  <div class="fw-card" onclick="showDetail('d1')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="18" y1="55" x2="165" y2="55" stroke="#CBD5E1" stroke-width=".8"/><circle cx="50" cy="55" r="18" stroke="#2563EB" stroke-width="1.5" fill="none"/><text x="50" y="53" text-anchor="middle" font-size="5" font-weight="700" fill="#2563EB" font-family="Arial,sans-serif">Customers</text><text x="50" y="61" text-anchor="middle" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">&amp; Investors</text><path d="M70,55 L100,55" stroke="#CBD5E1" stroke-width="1.2" marker-end="url(#a1)"/><rect x="105" y="40" width="55" height="30" rx="5" stroke="#2563EB" stroke-width="1.5" fill="none"/><text x="132" y="53" text-anchor="middle" font-size="5" font-weight="700" fill="#2563EB" font-family="Arial,sans-serif">Resources</text><text x="132" y="61" text-anchor="middle" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Allocated</text><defs><marker id="a1" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#CBD5E1"/></marker></defs><text x="90" y="90" text-anchor="middle" font-size="5" fill="#94A3B8" font-family="Arial,sans-serif">Captive allocation</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Law 1: Resource Dependence</div>
+      <div class="fw-desc">Firms are captive to the resource needs of their current customers and investors</div>
+      <div class="fw-slib">Slibrary 5</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d2')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="60" height="70" rx="5" stroke="#2563EB" stroke-width="1.5" fill="none"/><text x="50" y="50" text-anchor="middle" font-size="6" font-weight="700" fill="#2563EB" font-family="Arial,sans-serif">$40B</text><text x="50" y="60" text-anchor="middle" font-size="5" fill="#64748B" font-family="Arial,sans-serif">Incumbent</text><rect x="110" y="60" width="40" height="30" rx="5" stroke="#2563EB" stroke-width="1.5" fill="none"/><text x="130" y="77" text-anchor="middle" font-size="5" font-weight="700" fill="#2563EB" font-family="Arial,sans-serif">$2M</text><text x="130" y="100" text-anchor="middle" font-size="4.5" fill="#94A3B8" font-family="Arial,sans-serif">New market</text><text x="90" y="45" text-anchor="middle" font-size="10" fill="#CBD5E1">&#8800;</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Law 2: Small Markets Don&rsquo;t Solve Growth Needs</div>
+      <div class="fw-desc">Emerging markets are too small to satisfy large firms&rsquo; growth requirements</div>
+      <div class="fw-slib">Slibrary 5</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d3')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="25" width="65" height="55" rx="5" stroke="#CBD5E1" stroke-width="1.3" fill="none"/><text x="47" y="48" text-anchor="middle" font-size="5" fill="#94A3B8" font-family="Arial,sans-serif">Known</text><text x="47" y="58" text-anchor="middle" font-size="5" fill="#94A3B8" font-family="Arial,sans-serif">Market</text><text x="47" y="68" text-anchor="middle" font-size="5" fill="#94A3B8" font-family="Arial,sans-serif">&#10003; Data</text><rect x="100" y="25" width="65" height="55" rx="5" stroke="#2563EB" stroke-width="1.5" fill="none" stroke-dasharray="5,3"/><text x="132" y="48" text-anchor="middle" font-size="5" font-weight="700" fill="#2563EB" font-family="Arial,sans-serif">Unknown</text><text x="132" y="58" text-anchor="middle" font-size="5" fill="#2563EB" font-family="Arial,sans-serif">Market</text><text x="132" y="68" text-anchor="middle" font-size="5" fill="#2563EB" font-family="Arial,sans-serif">? Discovery</text><text x="90" y="100" text-anchor="middle" font-size="5" fill="#94A3B8" font-family="Arial,sans-serif">Analysis vs. Discovery</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Law 3: Markets That Don&rsquo;t Exist Can&rsquo;t Be Analysed</div>
+      <div class="fw-desc">Disruptive markets cannot be researched &mdash; they must be discovered</div>
+      <div class="fw-slib">Slibrary 5</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d4')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="15" width="65" height="35" rx="5" stroke="#2563EB" stroke-width="1.3" fill="none"/><text x="47" y="30" text-anchor="middle" font-size="5" font-weight="700" fill="#2563EB" font-family="Arial,sans-serif">Resources</text><text x="47" y="40" text-anchor="middle" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">What we have</text><rect x="15" y="55" width="65" height="22" rx="5" stroke="#2563EB" stroke-width="1.3" fill="none"/><text x="47" y="69" text-anchor="middle" font-size="5" font-weight="700" fill="#2563EB" font-family="Arial,sans-serif">Processes</text><rect x="15" y="82" width="65" height="22" rx="5" stroke="#2563EB" stroke-width="1.3" fill="none"/><text x="47" y="96" text-anchor="middle" font-size="5" font-weight="700" fill="#2563EB" font-family="Arial,sans-serif">Values</text><path d="M82,50 L98,50" stroke="#CBD5E1" stroke-width="1" marker-end="url(#a1)"/><rect x="100" y="25" width="65" height="60" rx="5" stroke="#2563EB" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/><text x="132" y="50" text-anchor="middle" font-size="5" font-weight="700" fill="#2563EB" font-family="Arial,sans-serif">Disabilities</text><text x="132" y="60" text-anchor="middle" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">What we can&apos;t</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Law 4: Capabilities Define Disabilities</div>
+      <div class="fw-desc">What makes a firm great at sustaining innovation makes it bad at disruption</div>
+      <div class="fw-slib">Slibrary 5</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d5')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="18" y1="10" x2="18" y2="95" stroke="#CBD5E1" stroke-width=".8"/><line x1="18" y1="95" x2="165" y2="95" stroke="#CBD5E1" stroke-width=".8"/><path d="M22,85 C50,78 80,55 120,25 C140,15 155,12 165,10" stroke="#2563EB" stroke-width="1.5" fill="none"/><path d="M22,90 C50,88 80,82 120,70 C140,65 155,62 165,60" stroke="#CBD5E1" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/><text x="168" y="12" font-size="4.5" fill="#2563EB" font-family="Arial,sans-serif">Tech</text><text x="168" y="62" font-size="4.5" fill="#94A3B8" font-family="Arial,sans-serif">Demand</text><rect x="70" y="30" width="50" height="35" rx="0" fill="none" stroke="#2563EB" stroke-width=".8" stroke-dasharray="2,2" opacity=".5"/><text x="95" y="50" text-anchor="middle" font-size="4.5" fill="#2563EB" font-family="Arial,sans-serif">Overshoot</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Law 5: Technology Supply &#8800; Market Demand</div>
+      <div class="fw-desc">Technology improves faster than customers can absorb &mdash; creating overshoot</div>
+      <div class="fw-slib">Slibrary 5</div>
+    </div>
+  </div>
+</div>
+
+<div class="fw-detail" id="d1">
+  <button class="fw-detail-close" onclick="hideDetail('d1')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 5 &mdash; The Five Laws of Disruption</div>
+  <h3>Law 1: Resource Dependence</h3>
+  <div class="fw-defn">Companies depend on customers and investors for resources, making them unable to invest in disruptive technologies that those stakeholders do not yet want.</div>
+  <div class="fw-subdesc">Firms are captive to the resource needs of their current customers and investors</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Customer control &rarr; existing customers determine resource allocation priorities</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Investor pressure &rarr; shareholders reward sustaining investments, punish uncertainty</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Resource diversion &rarr; disruptive projects starved of funding and talent</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Rational rejection &rarr; managers correctly reject low-margin disruptive opportunities</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Christensen, C.M. (2016) <em>The Innovator&rsquo;s Dilemma: When New Technologies Cause Great Firms to Fail</em>. Boston, Mass.: Harvard Business Review Press, pp. 30&ndash;53.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d2">
+  <button class="fw-detail-close" onclick="hideDetail('d2')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 5 &mdash; The Five Laws of Disruption</div>
+  <h3>Law 2: Small Markets Don&rsquo;t Solve Growth Needs</h3>
+  <div class="fw-defn">Large companies need large new revenue streams to maintain growth rates, making small emerging markets structurally unattractive even when they represent the future.</div>
+  <div class="fw-subdesc">Emerging markets are too small to satisfy large firms&rsquo; growth requirements</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Growth imperative &rarr; a $40bn company needs $4bn in new revenue just to grow 10%</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Market size mismatch &rarr; disruptive markets start small by definition</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Opportunity cost &rarr; managers rationally pursue large, visible markets instead</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Waiting trap &rarr; by the time the market is large enough, entrants own it</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Christensen, C.M. (2016) <em>The Innovator&rsquo;s Dilemma</em>. Boston, Mass.: Harvard Business Review Press, pp. 54&ndash;73.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d3">
+  <button class="fw-detail-close" onclick="hideDetail('d3')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 5 &mdash; The Five Laws of Disruption</div>
+  <h3>Law 3: Markets That Don&rsquo;t Exist Can&rsquo;t Be Analysed</h3>
+  <div class="fw-defn">Conventional market research and planning tools fail for disruptive innovations because the target market does not yet exist, requiring discovery-driven rather than analytical planning.</div>
+  <div class="fw-subdesc">Disruptive markets cannot be researched &mdash; they must be discovered</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Analysis paralysis &rarr; demanding data for a market that has no data yet</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Discovery-driven planning &rarr; assumptions replace forecasts as the planning unit</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Failure as learning &rarr; early market failures are information, not defeats</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Emergent strategy &rarr; the right strategy emerges from action, not from analysis</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Christensen, C.M. (2016) <em>The Innovator&rsquo;s Dilemma</em>. Boston, Mass.: Harvard Business Review Press, pp. 74&ndash;95.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d4">
+  <button class="fw-detail-close" onclick="hideDetail('d4')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 5 &mdash; The Five Laws of Disruption</div>
+  <h3>Law 4: Capabilities Define Disabilities</h3>
+  <div class="fw-defn">An organisation&rsquo;s capabilities &mdash; its resources, processes, and values (RPV) &mdash; simultaneously define what it cannot do, creating structural blind spots that make disruption invisible to incumbents.</div>
+  <div class="fw-subdesc">What makes a firm great at sustaining innovation makes it bad at disruption</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Resources &rarr; what the firm has (people, technology, cash, brands)</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Processes &rarr; how the firm does things (decision-making, budgeting, planning)</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Values &rarr; what the firm prioritises (margins, market size, customer type)</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Disability mirror &rarr; each capability creates a corresponding inability</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Christensen, C.M. and Raynor, M.E. (2003) <em>The Innovator&rsquo;s Solution: Creating and Sustaining Successful Growth</em>. Boston, Mass.: Harvard Business School Press, pp. 177&ndash;206.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d5">
+  <button class="fw-detail-close" onclick="hideDetail('d5')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 5 &mdash; The Five Laws of Disruption</div>
+  <h3>Law 5: Technology Supply &#8800; Market Demand</h3>
+  <div class="fw-defn">The pace of technological progress frequently exceeds the rate at which customers can absorb it, creating the overshoot that opens the door for simpler, cheaper disruptive alternatives.</div>
+  <div class="fw-subdesc">Technology improves faster than customers can absorb &mdash; creating overshoot</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Performance overshoot &rarr; products become better than customers need</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Basis of competition shifts &rarr; from functionality to reliability to convenience to price</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Disruptive window &rarr; overshoot creates space for simpler, cheaper alternatives</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Modularisation &rarr; overshooting triggers shift from integrated to modular architectures</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Christensen, C.M. (2016) <em>The Innovator&rsquo;s Dilemma</em>. Boston, Mass.: Harvard Business Review Press, pp. 171&ndash;197.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="set-2">
+<div class="set-header">
+  <div class="set-dot"></div>
+  <div class="set-title">Set 6 &mdash; Entrepreneurial Mindset</div>
+  <div class="set-count">5 frameworks</div>
+</div>
+<div class="fw-grid">
+  <div class="fw-card" onclick="showDetail('d6')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="45" cy="50" r="22" stroke="#DC2626" stroke-width="1.5" fill="none"/><text x="45" y="45" text-anchor="middle" font-size="5" font-weight="700" fill="#DC2626" font-family="Arial,sans-serif">Who I am</text><text x="45" y="53" text-anchor="middle" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">What I know</text><text x="45" y="61" text-anchor="middle" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Whom I know</text><path d="M69,50 L95,35" stroke="#CBD5E1" stroke-width="1" marker-end="url(#a1)"/><path d="M69,50 L95,50" stroke="#CBD5E1" stroke-width="1" marker-end="url(#a1)"/><path d="M69,50 L95,65" stroke="#CBD5E1" stroke-width="1" marker-end="url(#a1)"/><circle cx="110" cy="35" r="10" stroke="#DC2626" stroke-width="1" fill="none"/><text x="110" y="37" text-anchor="middle" font-size="4" fill="#64748B" font-family="Arial,sans-serif">Goal A</text><circle cx="110" cy="50" r="10" stroke="#DC2626" stroke-width="1" fill="none"/><text x="110" y="52" text-anchor="middle" font-size="4" fill="#64748B" font-family="Arial,sans-serif">Goal B</text><circle cx="110" cy="65" r="10" stroke="#DC2626" stroke-width="1" fill="none"/><text x="110" y="67" text-anchor="middle" font-size="4" fill="#64748B" font-family="Arial,sans-serif">Goal C</text><text x="90" y="95" text-anchor="middle" font-size="5" fill="#94A3B8" font-family="Arial,sans-serif">Means &rarr; Goals</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Effectuation Process</div>
+      <div class="fw-desc">Start with means, not goals &mdash; who you are, what you know, whom you know</div>
+      <div class="fw-slib">Slibrary 6</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d7')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="20" width="30" height="20" rx="3" stroke="#DC2626" stroke-width="1.2" fill="none"/><rect x="50" y="30" width="25" height="25" rx="3" stroke="#DC2626" stroke-width="1.2" fill="none"/><circle cx="100" cy="35" r="12" stroke="#DC2626" stroke-width="1.2" fill="none"/><rect x="130" y="25" width="20" height="30" rx="3" stroke="#DC2626" stroke-width="1.2" fill="none"/><path d="M40,60 C60,70 80,72 90,65 C100,58 110,62 130,60" stroke="#DC2626" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/><rect x="50" y="75" width="80" height="25" rx="6" stroke="#DC2626" stroke-width="1.5" fill="none"/><text x="90" y="90" text-anchor="middle" font-size="6" font-weight="700" fill="#DC2626" font-family="Arial,sans-serif">New Solution</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Bricolage</div>
+      <div class="fw-desc">Making do with what you have &mdash; recombining existing resources for new purposes</div>
+      <div class="fw-slib">Slibrary 6</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d8')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="90" cy="45" r="28" stroke="#DC2626" stroke-width="1.5" fill="none"/><text x="90" y="40" text-anchor="middle" font-size="5" font-weight="700" fill="#DC2626" font-family="Arial,sans-serif">Adaptive</text><text x="90" y="50" text-anchor="middle" font-size="5" font-weight="700" fill="#DC2626" font-family="Arial,sans-serif">Cognition</text><path d="M90,17 L90,10" stroke="#DC2626" stroke-width="1"/><path d="M118,45 L125,45" stroke="#DC2626" stroke-width="1"/><path d="M90,73 L90,80" stroke="#DC2626" stroke-width="1"/><path d="M62,45 L55,45" stroke="#DC2626" stroke-width="1"/><text x="90" y="7" text-anchor="middle" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Sense</text><text x="140" y="47" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Process</text><text x="90" y="92" text-anchor="middle" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Act</text><text x="30" y="47" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Adapt</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Cognitive Adaptability</div>
+      <div class="fw-desc">Dynamic, flexible thinking that senses change and generates multiple decision frameworks</div>
+      <div class="fw-slib">Slibrary 6</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d9')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="30" y="15" width="120" height="18" rx="9" stroke="#DC2626" stroke-width="1.3" fill="none"/><rect x="30" y="15" width="96" height="18" rx="9" fill="none" stroke="#DC2626" stroke-width="0"/><line x1="30" y1="24" x2="126" y2="24" stroke="none"/><text x="90" y="27" text-anchor="middle" font-size="4.5" fill="#DC2626" font-family="Arial,sans-serif">Marketing</text><rect x="30" y="38" width="120" height="18" rx="9" stroke="#DC2626" stroke-width="1.3" fill="none"/><text x="90" y="50" text-anchor="middle" font-size="4.5" fill="#DC2626" font-family="Arial,sans-serif">Innovation</text><rect x="30" y="61" width="120" height="18" rx="9" stroke="#DC2626" stroke-width="1.3" fill="none"/><text x="90" y="73" text-anchor="middle" font-size="4.5" fill="#DC2626" font-family="Arial,sans-serif">Management</text><rect x="30" y="84" width="120" height="18" rx="9" stroke="#DC2626" stroke-width="1.3" fill="none"/><text x="90" y="96" text-anchor="middle" font-size="4.5" fill="#DC2626" font-family="Arial,sans-serif">Risk-taking &middot; Finance</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Entrepreneurial Self-Efficacy</div>
+      <div class="fw-desc">Belief in one&rsquo;s ability to perform entrepreneurial tasks successfully</div>
+      <div class="fw-slib">Slibrary 6</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d10')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="45" cy="40" r="18" stroke="#DC2626" stroke-width="1.3" fill="none"/><text x="45" y="38" text-anchor="middle" font-size="4.5" fill="#DC2626" font-family="Arial,sans-serif">Prior</text><text x="45" y="46" text-anchor="middle" font-size="4.5" fill="#DC2626" font-family="Arial,sans-serif">Knowledge</text><circle cx="135" cy="40" r="18" stroke="#DC2626" stroke-width="1.3" fill="none"/><text x="135" y="42" text-anchor="middle" font-size="4.5" fill="#DC2626" font-family="Arial,sans-serif">Alertness</text><circle cx="90" cy="85" r="18" stroke="#DC2626" stroke-width="1.3" fill="none"/><text x="90" y="83" text-anchor="middle" font-size="4.5" fill="#DC2626" font-family="Arial,sans-serif">Social</text><text x="90" y="91" text-anchor="middle" font-size="4.5" fill="#DC2626" font-family="Arial,sans-serif">Networks</text><path d="M62,48 L72,55" stroke="#CBD5E1" stroke-width="1"/><path d="M118,48 L108,55" stroke="#CBD5E1" stroke-width="1"/><path d="M75,65 L85,70" stroke="#CBD5E1" stroke-width="1"/><text x="90" y="62" text-anchor="middle" font-size="5" font-weight="700" fill="#DC2626" font-family="Arial,sans-serif">Opportunity</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Opportunity Recognition Model</div>
+      <div class="fw-desc">How prior knowledge, alertness, and networks combine to reveal opportunities</div>
+      <div class="fw-slib">Slibrary 6</div>
+    </div>
+  </div>
+</div>
+
+<div class="fw-detail" id="d6">
+  <button class="fw-detail-close" onclick="hideDetail('d6')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 6 &mdash; Entrepreneurial Mindset</div>
+  <h3>Effectuation Process</h3>
+  <div class="fw-defn">Sarasvathy&rsquo;s model of expert entrepreneurial thinking: instead of starting with a goal and finding means, effectuators start with their means (who they are, what they know, whom they know) and discover possible goals.</div>
+  <div class="fw-subdesc">Start with means, not goals &mdash; who you are, what you know, whom you know</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Bird-in-hand &rarr; start with what you have, not what you need</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Affordable loss &rarr; invest only what you can afford to lose, not expected return</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Crazy quilt &rarr; build partnerships with self-selecting stakeholders</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Lemonade &rarr; leverage surprises rather than avoiding them</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Pilot-in-the-plane &rarr; focus on controllable aspects of an unpredictable future</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Sarasvathy, S.D. (2001) &lsquo;Causation and Effectuation: Toward a Theoretical Shift from Economic Inevitability to Entrepreneurial Contingency&rsquo;, <em>Academy of Management Review</em>, 26(2), pp. 243&ndash;263.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d7">
+  <button class="fw-detail-close" onclick="hideDetail('d7')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 6 &mdash; Entrepreneurial Mindset</div>
+  <h3>Bricolage</h3>
+  <div class="fw-defn">The entrepreneurial practice of making do by applying combinations of resources at hand to new problems and opportunities &mdash; creating something from nothing through resourceful recombination.</div>
+  <div class="fw-subdesc">Making do with what you have &mdash; recombining existing resources for new purposes</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Making do &rarr; refusing to be constrained by conventional resource limitations</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Recombination &rarr; using existing resources for purposes they were not designed for</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Community handiwork &rarr; drawing on diverse networks for materials and skills</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Contrast with optimisation &rarr; bricoleurs create; optimisers refine</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Baker, T. and Nelson, R.E. (2005) &lsquo;Creating Something from Nothing: Resource Construction through Entrepreneurial Bricolage&rsquo;, <em>Administrative Science Quarterly</em>, 50(3), pp. 329&ndash;366.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d8">
+  <button class="fw-detail-close" onclick="hideDetail('d8')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 6 &mdash; Entrepreneurial Mindset</div>
+  <h3>Cognitive Adaptability</h3>
+  <div class="fw-defn">The extent to which entrepreneurs are dynamic, flexible, self-regulating, and engaged in generating multiple decision frameworks &mdash; sensing and processing changes in their environment and acting on them.</div>
+  <div class="fw-subdesc">Dynamic, flexible thinking that senses change and generates multiple decision frameworks</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Metacognition &rarr; thinking about your own thinking processes</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Multiple frameworks &rarr; generating alternative mental models for the same situation</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Environmental scanning &rarr; continuously sensing changes in the competitive landscape</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Self-regulation &rarr; adjusting strategy and behaviour based on feedback</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Haynie, J.M. and Shepherd, D.A. (2011) &lsquo;Toward a Theory of Discontinuous Career Transition&rsquo;, <em>Entrepreneurship Theory and Practice</em>, 35(5), pp. 817&ndash;844.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d9">
+  <button class="fw-detail-close" onclick="hideDetail('d9')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 6 &mdash; Entrepreneurial Mindset</div>
+  <h3>Entrepreneurial Self-Efficacy</h3>
+  <div class="fw-defn">An individual&rsquo;s belief in their ability to successfully perform entrepreneurial roles and tasks &mdash; a stronger predictor of venture creation than personality traits, demographics, or education.</div>
+  <div class="fw-subdesc">Belief in one&rsquo;s ability to perform entrepreneurial tasks successfully</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Task-specific confidence &rarr; not general optimism but domain-specific belief</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Five dimensions &rarr; marketing, innovation, management, risk-taking, finance</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Mastery experiences &rarr; prior success is the strongest source of self-efficacy</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Bandura&rsquo;s framework &rarr; self-efficacy shapes effort, persistence, and resilience</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Chen, C.C., Greene, P.G. and Crick, A. (1998) &lsquo;Does Entrepreneurial Self-Efficacy Distinguish Entrepreneurs from Managers?&rsquo;, <em>Journal of Business Venturing</em>, 13(4), pp. 295&ndash;316.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d10">
+  <button class="fw-detail-close" onclick="hideDetail('d10')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 6 &mdash; Entrepreneurial Mindset</div>
+  <h3>Opportunity Recognition Model</h3>
+  <div class="fw-defn">A model explaining how entrepreneurs identify opportunities through the intersection of prior knowledge, alertness to information asymmetries, and social networks that expose them to diverse information flows.</div>
+  <div class="fw-subdesc">How prior knowledge, alertness, and networks combine to reveal opportunities</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Prior knowledge &rarr; domain expertise creates a lens for seeing opportunities others miss</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Entrepreneurial alertness &rarr; sensitivity to information about unmet needs and resources</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Social networks &rarr; weak ties expose entrepreneurs to novel, non-redundant information</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Pattern recognition &rarr; connecting dots across industries, markets, and technologies</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Shane, S. (2000) &lsquo;Prior Knowledge and the Discovery of Entrepreneurial Opportunities&rsquo;, <em>Organization Science</em>, 11(4), pp. 448&ndash;469.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="set-3">
+<div class="set-header">
+  <div class="set-dot"></div>
+  <div class="set-title">Set 7 &mdash; Strategic Responses to Disruption</div>
+  <div class="set-count">5 frameworks</div>
+</div>
+<div class="fw-grid">
+  <div class="fw-card" onclick="showDetail('d11')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="20" width="45" height="70" rx="5" stroke="#D97706" stroke-width="1.5" fill="none"/><text x="37" y="50" text-anchor="middle" font-size="7" font-weight="700" fill="#D97706" font-family="Arial,sans-serif">R</text><text x="37" y="62" text-anchor="middle" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Resources</text><rect x="68" y="20" width="45" height="70" rx="5" stroke="#D97706" stroke-width="1.5" fill="none"/><text x="90" y="50" text-anchor="middle" font-size="7" font-weight="700" fill="#D97706" font-family="Arial,sans-serif">P</text><text x="90" y="62" text-anchor="middle" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Processes</text><rect x="121" y="20" width="45" height="70" rx="5" stroke="#D97706" stroke-width="1.5" fill="none"/><text x="143" y="50" text-anchor="middle" font-size="7" font-weight="700" fill="#D97706" font-family="Arial,sans-serif">V</text><text x="143" y="62" text-anchor="middle" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Values</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">RPV Framework</div>
+      <div class="fw-desc">Resources, Processes, Values &mdash; why capabilities become disabilities</div>
+      <div class="fw-slib">Slibrary 7</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d12')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10,85 C18,83 25,75 35,60 C42,48 48,35 55,25 C60,20 63,20 68,25 C75,35 80,48 88,60 C95,75 102,83 110,85 C115,87 120,87 125,85 C130,82 138,75 148,65 C155,58 162,55 170,52" stroke="#D97706" stroke-width="1.8" fill="none"/><rect x="60" y="78" width="20" height="12" rx="0" fill="#FFF" stroke="#D97706" stroke-width="1.5"/><text x="70" y="87" text-anchor="middle" font-size="4" font-weight="700" fill="#D97706" font-family="Arial,sans-serif">CHASM</text><text x="35" y="100" text-anchor="middle" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Early Adopters</text><text x="120" y="100" text-anchor="middle" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Early Majority</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Crossing the Chasm</div>
+      <div class="fw-desc">The gap between visionaries and pragmatists where most innovations die</div>
+      <div class="fw-slib">Slibrary 7</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d13')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="90" cy="55" r="15" stroke="#D97706" stroke-width="1.5" fill="none"/><text x="90" y="57" text-anchor="middle" font-size="4.5" font-weight="700" fill="#D97706" font-family="Arial,sans-serif">Generic</text><circle cx="90" cy="55" r="25" stroke="#D97706" stroke-width="1.2" fill="none"/><text x="90" y="27" text-anchor="middle" font-size="4" fill="#64748B" font-family="Arial,sans-serif">Expected</text><circle cx="90" cy="55" r="35" stroke="#D97706" stroke-width="1" fill="none"/><text x="90" y="16" text-anchor="middle" font-size="4" fill="#64748B" font-family="Arial,sans-serif">Augmented</text><circle cx="90" cy="55" r="45" stroke="#D97706" stroke-width=".8" fill="none" stroke-dasharray="3,2"/><text x="90" y="6" text-anchor="middle" font-size="4" fill="#94A3B8" font-family="Arial,sans-serif">Potential</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Whole Product Model</div>
+      <div class="fw-desc">Generic product vs. everything customers need for a complete solution</div>
+      <div class="fw-slib">Slibrary 7</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d14')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="15" width="65" height="35" rx="5" stroke="#CBD5E1" stroke-width="1.2" fill="none"/><text x="47" y="30" text-anchor="middle" font-size="5" fill="#94A3B8" font-family="Arial,sans-serif">1. Ignore</text><text x="47" y="40" text-anchor="middle" font-size="4" fill="#CBD5E1" font-family="Arial,sans-serif">Most common</text><rect x="100" y="15" width="65" height="35" rx="5" stroke="#D97706" stroke-width="1.3" fill="none"/><text x="132" y="30" text-anchor="middle" font-size="5" fill="#D97706" font-family="Arial,sans-serif">2. Fight</text><text x="132" y="40" text-anchor="middle" font-size="4" fill="#64748B" font-family="Arial,sans-serif">Sustaining</text><rect x="15" y="60" width="65" height="35" rx="5" stroke="#D97706" stroke-width="1.5" fill="none"/><text x="47" y="75" text-anchor="middle" font-size="5" font-weight="700" fill="#D97706" font-family="Arial,sans-serif">3. Separate</text><text x="47" y="85" text-anchor="middle" font-size="4" fill="#64748B" font-family="Arial,sans-serif">Autonomous unit</text><rect x="100" y="60" width="65" height="35" rx="5" stroke="#D97706" stroke-width="1.3" fill="none"/><text x="132" y="75" text-anchor="middle" font-size="5" fill="#D97706" font-family="Arial,sans-serif">4. Acquire</text><text x="132" y="85" text-anchor="middle" font-size="4" fill="#64748B" font-family="Arial,sans-serif">Buy disruptor</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Incumbent Response Framework</div>
+      <div class="fw-desc">Four typical incumbent responses to disruption &mdash; and why most fail</div>
+      <div class="fw-slib">Slibrary 7</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d15')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="90" cy="20" r="10" stroke="#D97706" stroke-width="1.8" fill="none"/><text x="90" y="23" text-anchor="middle" font-size="5" font-weight="700" fill="#D97706" font-family="Arial,sans-serif">1</text><circle cx="70" cy="50" r="10" stroke="#D97706" stroke-width="1.3" fill="none"/><text x="70" y="53" text-anchor="middle" font-size="5" fill="#D97706" font-family="Arial,sans-serif">2</text><circle cx="110" cy="50" r="10" stroke="#D97706" stroke-width="1.3" fill="none"/><text x="110" y="53" text-anchor="middle" font-size="5" fill="#D97706" font-family="Arial,sans-serif">3</text><circle cx="50" cy="80" r="10" stroke="#D97706" stroke-width="1" fill="none"/><text x="50" y="83" text-anchor="middle" font-size="5" fill="#94A3B8" font-family="Arial,sans-serif">4</text><circle cx="90" cy="80" r="10" stroke="#D97706" stroke-width="1" fill="none"/><text x="90" y="83" text-anchor="middle" font-size="5" fill="#94A3B8" font-family="Arial,sans-serif">5</text><circle cx="130" cy="80" r="10" stroke="#D97706" stroke-width="1" fill="none"/><text x="130" y="83" text-anchor="middle" font-size="5" fill="#94A3B8" font-family="Arial,sans-serif">6</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Bowling Alley Strategy</div>
+      <div class="fw-desc">Dominate one niche, then use it as a reference to capture adjacent segments</div>
+      <div class="fw-slib">Slibrary 7</div>
+    </div>
+  </div>
+</div>
+
+<div class="fw-detail" id="d11">
+  <button class="fw-detail-close" onclick="hideDetail('d11')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 7 &mdash; Strategic Responses to Disruption</div>
+  <h3>RPV Framework</h3>
+  <div class="fw-defn">A diagnostic tool for assessing whether an organisation can successfully address a disruptive challenge by examining its Resources (what it has), Processes (how it works), and Values (what it prioritises).</div>
+  <div class="fw-subdesc">Resources, Processes, Values &mdash; why capabilities become disabilities</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Resources &rarr; tangible and intangible assets (people, tech, cash, relationships)</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Processes &rarr; patterns of interaction, coordination, and decision-making</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Values &rarr; criteria by which employees prioritise decisions (margins, market size)</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Migration path &rarr; as firms mature, capability shifts from resources to processes to values</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Christensen, C.M. and Raynor, M.E. (2003) <em>The Innovator&rsquo;s Solution</em>. Boston, Mass.: Harvard Business School Press, pp. 177&ndash;206.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d12">
+  <button class="fw-detail-close" onclick="hideDetail('d12')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 7 &mdash; Strategic Responses to Disruption</div>
+  <h3>Crossing the Chasm</h3>
+  <div class="fw-defn">Moore&rsquo;s model identifying the dangerous gap between early adopters (visionaries) and the early majority (pragmatists) &mdash; the point where most innovative products fail because they cannot transition from niche to mainstream.</div>
+  <div class="fw-subdesc">The gap between visionaries and pragmatists where most innovations die</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Early market &rarr; technology enthusiasts and visionaries buy the vision</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>The Chasm &rarr; pragmatists need references, whole products, and proven ROI</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Bowling alley &rarr; target one niche segment, dominate it, then expand</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Whole product &rarr; pragmatists buy complete solutions, not raw technology</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Moore, G.A. (2014) <em>Crossing the Chasm: Marketing and Selling Disruptive Products to Mainstream Customers</em>. 3rd edn. New York: HarperBusiness.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d13">
+  <button class="fw-detail-close" onclick="hideDetail('d13')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 7 &mdash; Strategic Responses to Disruption</div>
+  <h3>Whole Product Model</h3>
+  <div class="fw-defn">Moore&rsquo;s framework distinguishing the generic product (core technology) from the whole product (everything needed for the customer to achieve their buying objective) &mdash; essential for crossing the chasm.</div>
+  <div class="fw-subdesc">Generic product vs. everything customers need for a complete solution</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Generic product &rarr; what ships in the box, the core technology</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Expected product &rarr; minimum requirements to meet purchase objective</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Augmented product &rarr; maximum chance of achieving the buying objective</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Potential product &rarr; room for growth as the market evolves</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Moore, G.A. (2014) <em>Crossing the Chasm</em>. 3rd edn. New York: HarperBusiness, pp. 108&ndash;132.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d14">
+  <button class="fw-detail-close" onclick="hideDetail('d14')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 7 &mdash; Strategic Responses to Disruption</div>
+  <h3>Incumbent Response Framework</h3>
+  <div class="fw-defn">A classification of how established firms typically respond to disruptive threats: ignore, fight with sustaining innovation, create an autonomous unit, or acquire the disruptor &mdash; with varying degrees of success.</div>
+  <div class="fw-subdesc">Four typical incumbent responses to disruption &mdash; and why most fail</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Ignore &rarr; dismiss the threat as low-quality or niche (most common initial response)</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Fight &rarr; improve existing products to outperform the disruptor (sustaining response)</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Separate &rarr; create an autonomous business unit with different economics</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Acquire &rarr; buy the disruptor before it becomes a competitive threat</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Charitou, C.D. and Markides, C.C. (2003) &lsquo;Responses to Disruptive Strategic Innovation&rsquo;, <em>MIT Sloan Management Review</em>, 44(2), pp. 55&ndash;63.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d15">
+  <button class="fw-detail-close" onclick="hideDetail('d15')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 7 &mdash; Strategic Responses to Disruption</div>
+  <h3>Bowling Alley Strategy</h3>
+  <div class="fw-defn">Moore&rsquo;s post-chasm growth strategy: dominate one niche segment completely (the head pin), then use that reference base to knock down adjacent segments sequentially rather than pursuing the mass market all at once.</div>
+  <div class="fw-subdesc">Dominate one niche, then use it as a reference to capture adjacent segments</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Head pin &rarr; the first niche segment with a compelling, urgent problem</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Whole product &rarr; build the complete solution for that one segment</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Reference base &rarr; satisfied customers in one niche create credibility for the next</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Sequential domination &rarr; adjacent segments fall like bowling pins</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Moore, G.A. (2014) <em>Crossing the Chasm</em>. 3rd edn. New York: HarperBusiness, pp. 67&ndash;95.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="set-4">
+<div class="set-header">
+  <div class="set-dot"></div>
+  <div class="set-title">Set 8 &mdash; Disruption in Context</div>
+  <div class="set-count">5 frameworks</div>
+</div>
+<div class="fw-grid">
+  <div class="fw-card" onclick="showDetail('d16')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="90" cy="50" r="30" stroke="#059669" stroke-width="1.5" fill="none"/><text x="90" y="48" text-anchor="middle" font-size="5" font-weight="700" fill="#059669" font-family="Arial,sans-serif">Disruption</text><text x="90" y="57" text-anchor="middle" font-size="5" fill="#059669" font-family="Arial,sans-serif">Context</text><text x="50" y="15" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Demographics</text><text x="120" y="15" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Values</text><text x="35" y="95" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Inequality</text><text x="115" y="95" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Movements</text><line x1="70" y1="22" x2="78" y2="28" stroke="#CBD5E1" stroke-width=".8"/><line x1="118" y1="22" x2="110" y2="28" stroke="#CBD5E1" stroke-width=".8"/><line x1="70" y1="85" x2="78" y2="75" stroke="#CBD5E1" stroke-width=".8"/><line x1="118" y1="85" x2="110" y2="75" stroke="#CBD5E1" stroke-width=".8"/></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Social Dimensions of Disruption</div>
+      <div class="fw-desc">How demographics, values, inequality, and movements shape disruption</div>
+      <div class="fw-slib">Slibrary 8</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d17')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="55" height="30" rx="5" stroke="#059669" stroke-width="1.3" fill="none"/><text x="47" y="38" text-anchor="middle" font-size="5" fill="#059669" font-family="Arial,sans-serif">Regulation</text><rect x="105" y="20" width="55" height="30" rx="5" stroke="#059669" stroke-width="1.3" fill="none"/><text x="132" y="38" text-anchor="middle" font-size="5" fill="#059669" font-family="Arial,sans-serif">Policy</text><rect x="20" y="65" width="55" height="30" rx="5" stroke="#059669" stroke-width="1.3" fill="none"/><text x="47" y="83" text-anchor="middle" font-size="5" fill="#059669" font-family="Arial,sans-serif">Politics</text><rect x="105" y="65" width="55" height="30" rx="5" stroke="#059669" stroke-width="1.3" fill="none"/><text x="132" y="83" text-anchor="middle" font-size="5" fill="#059669" font-family="Arial,sans-serif">Trade</text><text x="90" y="56" text-anchor="middle" font-size="5" font-weight="700" fill="#059669" font-family="Arial,sans-serif">Disruption</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Political &amp; Regulatory Disruption</div>
+      <div class="fw-desc">How policy, regulation, and politics create barriers and opportunities for disruption</div>
+      <div class="fw-slib">Slibrary 8</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d18')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="25" width="50" height="55" rx="5" stroke="#CBD5E1" stroke-width="1.2" fill="none"/><text x="40" y="48" text-anchor="middle" font-size="4.5" fill="#94A3B8" font-family="Arial,sans-serif">Cultural</text><text x="40" y="57" text-anchor="middle" font-size="4.5" fill="#94A3B8" font-family="Arial,sans-serif">Orthodoxy</text><rect x="115" y="25" width="50" height="55" rx="5" stroke="#059669" stroke-width="1.5" fill="none"/><text x="140" y="48" text-anchor="middle" font-size="4.5" font-weight="700" fill="#059669" font-family="Arial,sans-serif">Cultural</text><text x="140" y="57" text-anchor="middle" font-size="4.5" font-weight="700" fill="#059669" font-family="Arial,sans-serif">Innovation</text><path d="M67,52 L80,52" stroke="#CBD5E1" stroke-width="1"/><text x="85" y="42" text-anchor="middle" font-size="8" fill="#059669" font-family="Arial,sans-serif">&#9889;</text><text x="85" y="55" text-anchor="middle" font-size="4" fill="#64748B" font-family="Arial,sans-serif">Contradiction</text><path d="M95,52 L113,52" stroke="#059669" stroke-width="1" marker-end="url(#a1)"/></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Cultural Innovation Model</div>
+      <div class="fw-desc">Disruptive brands offer better ideologies, not just better products</div>
+      <div class="fw-slib">Slibrary 8</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d19')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="90" cy="50" r="35" stroke="#059669" stroke-width="1.5" fill="none"/><path d="M70,50 Q90,25 110,50 Q90,75 70,50" stroke="#059669" stroke-width="1.3" fill="none"/><text x="90" y="45" text-anchor="middle" font-size="5" font-weight="700" fill="#059669" font-family="Arial,sans-serif">Sustain-</text><text x="90" y="54" text-anchor="middle" font-size="5" font-weight="700" fill="#059669" font-family="Arial,sans-serif">ability</text><text x="45" y="30" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Circular</text><text x="120" y="30" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">ESG</text><text x="50" y="80" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Green</text><text x="115" y="80" font-size="4.5" fill="#64748B" font-family="Arial,sans-serif">Impact</text></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Sustainability-Driven Disruption</div>
+      <div class="fw-desc">Environmental constraints and ESG mandates as drivers of disruptive innovation</div>
+      <div class="fw-slib">Slibrary 8</div>
+    </div>
+  </div>
+  <div class="fw-card" onclick="showDetail('d20')">
+    <div class="fw-thumb"><svg viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="30" width="40" height="50" rx="4" stroke="#CBD5E1" stroke-width="1.2" fill="none"/><text x="35" y="50" text-anchor="middle" font-size="4.5" fill="#94A3B8" font-family="Arial,sans-serif">Pipeline</text><text x="35" y="59" text-anchor="middle" font-size="4.5" fill="#94A3B8" font-family="Arial,sans-serif">A &rarr; B &rarr; C</text><path d="M58,55 L78,55" stroke="#059669" stroke-width="1.2" marker-end="url(#a1)"/><rect x="80" y="20" width="85" height="70" rx="6" stroke="#059669" stroke-width="1.5" fill="none"/><text x="122" y="40" text-anchor="middle" font-size="5" font-weight="700" fill="#059669" font-family="Arial,sans-serif">Platform</text><text x="122" y="50" text-anchor="middle" font-size="5" fill="#059669" font-family="Arial,sans-serif">Ecosystem</text><circle cx="100" cy="70" r="5" stroke="#059669" stroke-width=".8" fill="none"/><circle cx="122" cy="70" r="5" stroke="#059669" stroke-width=".8" fill="none"/><circle cx="144" cy="70" r="5" stroke="#059669" stroke-width=".8" fill="none"/></svg></div>
+    <div class="fw-body">
+      <div class="fw-name">Digital Platform Disruption</div>
+      <div class="fw-desc">Ecosystem-vs-ecosystem competition that collapses traditional value chains</div>
+      <div class="fw-slib">Slibrary 8</div>
+    </div>
+  </div>
+</div>
+
+<div class="fw-detail" id="d16">
+  <button class="fw-detail-close" onclick="hideDetail('d16')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 8 &mdash; Disruption in Context</div>
+  <h3>Social Dimensions of Disruption</h3>
+  <div class="fw-defn">A framework for analysing how social factors &mdash; changing demographics, shifting values, inequality, and social movements &mdash; create conditions for disruptive innovation or shape how disruption is adopted and resisted.</div>
+  <div class="fw-subdesc">How demographics, values, inequality, and movements shape disruption</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Demographic shifts &rarr; ageing populations, urbanisation, migration patterns</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Value shifts &rarr; sustainability, privacy, authenticity drive new market demands</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Inequality dynamics &rarr; disruption can widen or narrow socioeconomic gaps</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Social movements &rarr; collective action accelerates or blocks adoption</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Soltanifar, M., Hughes, M. and G&ouml;cke, L. (2021) <em>Digital Entrepreneurship: Impact on Business and Society</em>. Cham: Springer, pp. 1&ndash;23.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d17">
+  <button class="fw-detail-close" onclick="hideDetail('d17')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 8 &mdash; Disruption in Context</div>
+  <h3>Political &amp; Regulatory Disruption</h3>
+  <div class="fw-defn">A model examining how government policy, regulation, and political shifts create both barriers and opportunities for disruptive innovation &mdash; from the EU AI Act to antitrust enforcement to industrial policy.</div>
+  <div class="fw-subdesc">How policy, regulation, and politics create barriers and opportunities for disruption</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Regulatory barriers &rarr; compliance costs that protect incumbents from entrants</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Regulatory enablers &rarr; new rules that mandate innovation (e.g. emissions standards)</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Political risk &rarr; policy uncertainty that deters long-term investment</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Industrial policy &rarr; government-backed disruption (e.g. CHIPS Act, EU Green Deal)</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Blind, K. (2012) &lsquo;The Influence of Regulations on Innovation&rsquo;, <em>Research Policy</em>, 41(2), pp. 391&ndash;407.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d18">
+  <button class="fw-detail-close" onclick="hideDetail('d18')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 8 &mdash; Disruption in Context</div>
+  <h3>Cultural Innovation Model</h3>
+  <div class="fw-defn">Holt&rsquo;s framework arguing that the most successful disruptive brands do not just offer better products &mdash; they offer better ideologies, addressing cultural contradictions that incumbents ignore or reinforce.</div>
+  <div class="fw-subdesc">Disruptive brands offer better ideologies, not just better products</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Cultural orthodoxy &rarr; the dominant ideology that incumbents embody and defend</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Cultural contradiction &rarr; tensions in society that the orthodoxy cannot resolve</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Cultural innovation &rarr; a new ideology that resolves the contradiction</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Source material &rarr; subcultures, media myths, and social movements as raw material</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Holt, D.B. (2004) <em>How Brands Become Icons: The Principles of Cultural Branding</em>. Boston, Mass.: Harvard Business School Press.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d19">
+  <button class="fw-detail-close" onclick="hideDetail('d19')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 8 &mdash; Disruption in Context</div>
+  <h3>Sustainability-Driven Disruption</h3>
+  <div class="fw-defn">A framework showing how environmental constraints, circular economy principles, and ESG mandates are creating a new class of disruption &mdash; where sustainability is not a cost centre but a competitive advantage.</div>
+  <div class="fw-subdesc">Environmental constraints and ESG mandates as drivers of disruptive innovation</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Circular economy &rarr; disrupting linear take-make-waste models</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>ESG mandates &rarr; regulation forcing incumbents to transform or face penalties</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Green premium &rarr; the cost gap between sustainable and conventional that disruptors close</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Impact investing &rarr; capital flows favouring sustainable disruptors over incumbents</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Schaltegger, S., L&uuml;deke-Freund, F. and Hansen, E.G. (2012) &lsquo;Business Cases for Sustainability&rsquo;, <em>International Journal of Innovation and Sustainable Development</em>, 6(2), pp. 95&ndash;119.</p>
+  </div>
+</div>
+
+<div class="fw-detail" id="d20">
+  <button class="fw-detail-close" onclick="hideDetail('d20')">&times;</button>
+  <div class="fw-detail-slib">Slibrary 8 &mdash; Disruption in Context</div>
+  <h3>Digital Platform Disruption</h3>
+  <div class="fw-defn">A model showing how digital platforms disrupt traditional industries by shifting competition from product-vs-product to ecosystem-vs-ecosystem, leveraging data network effects, and collapsing traditional value chains.</div>
+  <div class="fw-subdesc">Ecosystem-vs-ecosystem competition that collapses traditional value chains</div>
+  <div class="fw-components">
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Pipeline to platform &rarr; shift from linear value chains to multi-sided networks</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Ecosystem competition &rarr; platforms compete as ecosystems, not individual firms</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Data advantage &rarr; platform data creates compounding competitive moats</span></div>
+    <div class="fw-comp-item"><div class="fw-comp-dot"></div><span>Disintermediation &rarr; platforms remove intermediaries, capturing their margin</span></div>
+  </div>
+  <div class="fw-ref">
+    <div class="fw-ref-label">Reference</div>
+    <p>Parker, G., Van Alstyne, M. and Choudary, S.P. (2016) <em>Platform Revolution</em>. New York: W.W. Norton, pp. 1&ndash;28.</p>
+  </div>
+</div>
+
+</div>
+
+</main>
+
+<footer class="footer">
+  <strong>MMGTE301</strong> &middot; Disruptive Entrepreneurship &middot; &copy; 2026 Dr. Hildegard Haas<br>
+  Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) &middot; Unit 2: The Innovator&rsquo;s Dilemma
+</footer>
+
+<script>
+let openDetail=null;
+function showDetail(id){
+  if(openDetail&&openDetail!==id){document.getElementById(openDetail).classList.remove('show')}
+  const el=document.getElementById(id);
+  el.classList.toggle('show');
+  openDetail=el.classList.contains('show')?id:null;
+  if(openDetail){el.scrollIntoView({behavior:'smooth',block:'nearest'})}
+}
+function hideDetail(id){document.getElementById(id).classList.remove('show');openDetail=null}
+</script>
+
+<script>
+// Disable right-click context menu
+document.addEventListener('contextmenu',function(e){e.preventDefault();return false});
+
+// Disable keyboard shortcuts (Ctrl+C, Ctrl+S, Ctrl+U, Ctrl+A, Ctrl+P, F12)
+document.addEventListener('keydown',function(e){
+  if(e.ctrlKey&&['c','C','s','S','u','U','a','A','p','P'].includes(e.key)){e.preventDefault();return false}
+  if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['i','I','j','J'].includes(e.key))){e.preventDefault();return false}
+});
+
+// Disable drag
+document.addEventListener('dragstart',function(e){e.preventDefault();return false});
+
+// Disable copy/cut
+document.addEventListener('copy',function(e){e.preventDefault();return false});
+document.addEventListener('cut',function(e){e.preventDefault();return false});
+</script>
+</body>
+</html>

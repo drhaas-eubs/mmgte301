@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MMGTE301 Unit 1 &mdash; Why &ldquo;Good Enough&rdquo; Wins</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--accent:#2563EB;--accent-light:#EFF6FF;--accent-dark:#1D4ED8;--unit:#2563EB;--bg:#FAFAF9;--text:#1A1A1A;--muted:#6B7280;--border:#E5E7EB;--navy:#1B2A4A;--card:#FFFFFF;--font-display:Arial,Helvetica,sans-serif;--font-body:Arial,Helvetica,sans-serif}
+html{scroll-behavior:smooth}body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased}
+
+
+
+
+
+
+
+
+
+.back-bar{background:#F0FDFA;padding:.7rem 0}
+.back-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.back-link{color:#0D9488;text-decoration:none;font-size:.88rem;font-weight:600;display:inline-flex;align-items:center;gap:.35rem;transition:color .2s}
+.back-link:hover{color:#065F46}
+.teal-bar{height:5px;background:#10B981}
+.page-header{background:var(--navy);color:#fff;padding:2.5rem 2rem 2rem}
+.page-header::before{display:none}
+.header-inner{max-width:1200px;margin:0 auto}
+.header-badge{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#D97706;margin-bottom:.75rem}
+.page-header h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;line-height:1.2;margin-bottom:.5rem}
+.header-sub{font-size:.92rem;color:rgba(255,255,255,.55);margin-bottom:.5rem}
+.header-copy{font-size:.8rem;color:rgba(255,255,255,.3);font-style:italic}
+.header-stats{display:flex;gap:2.5rem;margin-top:1.5rem}
+.hs{text-align:left}
+.hs-num{font-size:1.8rem;font-weight:700;color:#10B981;line-height:1}
+.hs-label{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.25rem}
+
+.main{max-width:720px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.pr-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem}
+.pr-title{font-family:var(--font-display);font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+.pr-subtitle{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;font-style:italic}
+.fw-callout{background:var(--accent-light);border:1px solid #93C5FD;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:.85rem;color:var(--accent-dark)}
+.fw-callout strong{font-weight:700}
+.pr-body p{font-size:.9rem;margin-bottom:1.1rem}
+.pr-body strong{font-weight:600}
+.refs{margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--border)}
+.refs h3{font-family:var(--font-display);font-size:1rem;font-weight:600;margin-bottom:.75rem}
+.refs p{font-size:.82rem;color:var(--muted);margin-bottom:.4rem}
+.footer{max-width:720px;margin:0 auto;padding:1.5rem;text-align:center;font-size:.75rem;color:var(--muted);border-top:1px solid var(--border)}.footer strong{font-weight:600}
+
+/* ── Content Protection ── */
+body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+@media print{body{display:none !important}html::after{content:"Printing is disabled. © 2026 Dr. Hildegard Haas";display:block;padding:3rem;font-size:1.5rem;text-align:center;color:#DC2626;font-family:Arial,sans-serif}}
+img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-drag:none;user-drag:none;pointer-events:none}
+</style>
+</head>
+<body oncopy="return false" oncut="return false" onpaste="return false">
+
+<!-- Back bar -->
+<div class="back-bar">
+  <div class="back-inner"><a class="back-link" href="../index.html">&larr; Back to Course Overview</a></div>
+</div>
+<div class="teal-bar"></div>
+
+<!-- Header -->
+<header class="page-header">
+  <div class="header-inner">
+    <div class="header-badge">MMGTE301 &middot; Unit 1 &middot; Pre-Reading</div>
+    <h1>Fundamentals of Innovation</h1>
+    <p class="header-sub">Understanding Disruption as a Process, Not a Moment</p>
+    <p class="header-copy">&copy; 2026 Dr. Hildegard Haas</p>
+  </div>
+</header>
+<div class="teal-bar"></div>
+
+<main class="main">
+<div class="pr-label">Pre-Reading</div>
+<div class="pr-title">Why &ldquo;Good Enough&rdquo; Wins</div>
+<div class="pr-subtitle">Understanding Disruption as a Process, Not a Moment</div>
+
+<div class="fw-callout"><strong>Key Framework: Christensen&rsquo;s Disruption S-Curves</strong></div>
+
+<div class="pr-body">
+<p>The word &ldquo;disruption&rdquo; has become so overused in business conversation that it has nearly lost its meaning. Every new product launch, every startup pitch, every corporate strategy deck invokes it. Yet Clayton Christensen, the Harvard Business School professor who coined the term, was precise about what it does and does not mean. Disruption is not a synonym for innovation. It is a specific process with a specific mechanism, and understanding that mechanism is the foundation of this entire course.</p>
+
+<p>The disruption model begins with two trajectories plotted on the same graph: performance over time. The first trajectory belongs to the incumbent &mdash; the established firm improving its products along dimensions that mainstream customers already value. Think of Intel making processors faster, or BMW making cars more powerful and refined. This is sustaining innovation, and incumbents are exceptionally good at it. They have the engineers, the customer relationships, the distribution channels, and the capital to keep improving.</p>
+
+<p>The second trajectory belongs to the entrant. It starts <strong>below</strong> the performance level that mainstream customers need. The product is simpler, cheaper, and often worse on the metrics that matter to existing customers. Early digital cameras produced grainy images. Early streaming video was low-resolution with buffering. Early electric vehicles had limited range. By every measure the incumbent cares about, the disruptive product is inferior.</p>
+
+<p>The mechanism of disruption lies in what happens next. The entrant improves &mdash; rapidly. Meanwhile, the incumbent overshoots. It continues to improve its products beyond what mainstream customers actually need or are willing to pay for. At some point, the entrant&rsquo;s trajectory crosses the threshold of &ldquo;good enough&rdquo; for the mainstream market. When it does, customers switch &mdash; not because the disruptive product is better on traditional metrics, but because it offers new advantages: lower cost, greater convenience, simpler access, or an entirely new value proposition.</p>
+
+<p>This is why Christensen&rsquo;s model is represented as two S-curves. The incumbent&rsquo;s curve shows steady, predictable improvement. The entrant&rsquo;s curve shows slow initial progress followed by rapid improvement. The horizontal line between them &mdash; the market need threshold &mdash; is the battleground. Once the entrant crosses it, the incumbent&rsquo;s advantages in traditional performance become irrelevant.</p>
+
+<p>The strategic implication is unsettling: incumbents do not fail because they are badly managed. They fail because they are <strong>well</strong> managed. They listen to their best customers, invest in the highest-margin products, and pursue the most attractive market segments. Every rational management practice pulls them toward sustaining innovation and away from the inferior, low-margin, uncertain disruptive technology. This is the paradox at the heart of the Innovator&rsquo;s Dilemma, which we will explore in depth in Unit 2.</p>
+
+<p>For now, the essential insight is this: disruption is a process, not a moment. It unfolds over years or decades. The disruptor does not win by being better &mdash; it wins by being good enough, and by offering something the incumbent&rsquo;s business model cannot match. The S-curves are not a prediction tool; they are a diagnostic lens. They help you see where you are, where the entrant is, and how much time you have before the curves cross.</p>
+</div>
+
+<div class="refs">
+  <h3>References</h3>
+  <p>Christensen, C.M. (2016) <em>The Innovator&rsquo;s Dilemma: When New Technologies Cause Great Firms to Fail</em>. Boston, Mass.: Harvard Business Review Press.</p>
+  <p>Christensen, C.M., Raynor, M.E. and McDonald, R. (2015) &lsquo;What Is Disruptive Innovation?&rsquo;, <em>Harvard Business Review</em>, December.</p>
+  <p>Foster, R.N. (1986) <em>Innovation: The Attacker&rsquo;s Advantage</em>. New York: Summit Books.</p>
+</div>
+</main>
+
+<footer class="footer">
+  <strong>MMGTE301</strong> &middot; Disruptive Entrepreneurship &middot; &copy; 2026 Dr. Hildegard Haas<br>
+  &copy; Dr. Hildegard Haas 2026
+</footer>
+
+<script>
+// Disable right-click context menu
+document.addEventListener('contextmenu',function(e){e.preventDefault();return false});
+
+// Disable keyboard shortcuts (Ctrl+C, Ctrl+S, Ctrl+U, Ctrl+A, Ctrl+P, F12)
+document.addEventListener('keydown',function(e){
+  if(e.ctrlKey&&['c','C','s','S','u','U','a','A','p','P'].includes(e.key)){e.preventDefault();return false}
+  if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['i','I','j','J'].includes(e.key))){e.preventDefault();return false}
+});
+
+// Disable drag
+document.addEventListener('dragstart',function(e){e.preventDefault();return false});
+
+// Disable copy/cut
+document.addEventListener('copy',function(e){e.preventDefault();return false});
+document.addEventListener('cut',function(e){e.preventDefault();return false});
+</script>
+</body>
+</html>

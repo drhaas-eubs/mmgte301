@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MMGTE301 Unit 3 &mdash; Session Activities</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--accent:#DC2626;--accent-light:#FEF2F2;--accent-dark:#991B1B;--bg:#F8FAFC;--text:#1A1A1A;--muted:#6B7280;--border:#E2E8F0;--navy:#1B2A4A;--card:#FFFFFF}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;margin:0}
+.back-bar{background:#F0FDFA;padding:.7rem 0}.back-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.back-link{color:#0D9488;text-decoration:none;font-size:.88rem;font-weight:600;display:inline-flex;align-items:center;gap:.35rem}.back-link:hover{color:#065F46}
+.teal-bar{height:5px;background:#10B981}
+.page-header{background:var(--navy);color:#fff;padding:2.5rem 2rem 2rem}
+.header-inner{max-width:780px;margin:0 auto}
+.header-badge{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#D97706;margin-bottom:.75rem}
+.page-header h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;line-height:1.2;margin-bottom:.5rem}
+.header-sub{font-size:.92rem;color:rgba(255,255,255,.55);margin-bottom:.5rem}
+.header-copy{font-size:.8rem;color:rgba(255,255,255,.3);font-style:italic}
+.main{max-width:780px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.overview{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:2.5rem}
+.overview h2{font-size:1.1rem;font-weight:700;color:var(--accent);margin-bottom:1rem}
+.ov-row{display:flex;align-items:center;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--border);font-size:.85rem}.ov-row:last-child{border-bottom:none}
+.ov-phase{font-weight:700;color:var(--accent);min-width:60px}.ov-name{flex:1}.ov-time{color:var(--muted);font-size:.8rem;min-width:50px;text-align:right}
+.phase{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.75rem;margin-bottom:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.phase-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:1rem;margin-bottom:.75rem}
+.phase h3{font-size:1.15rem;font-weight:700;margin-bottom:.15rem}.phase .time{font-size:.8rem;color:var(--muted);margin-bottom:1rem}.phase p{font-size:.88rem;margin-bottom:.75rem}
+.task{background:#F0FDFA;border-left:3px solid #0D9488;padding:.75rem 1rem;border-radius:0 8px 8px 0;margin:.75rem 0;font-size:.85rem}.task strong{color:#0D9488;font-weight:700}
+.tip{background:#FEFCE8;border:1px solid #FDE68A;border-radius:10px;padding:.75rem 1rem;margin:.75rem 0;font-size:.82rem;color:#78350F}
+.break-bar{display:flex;align-items:center;justify-content:center;gap:.75rem;padding:1rem;margin:1.5rem 0;font-size:.9rem;color:var(--muted)}.break-bar::before,.break-bar::after{content:'';flex:1;height:1px;background:var(--border)}
+.case-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem}
+.case-title{font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+.case-subtitle{font-size:.9rem;color:var(--muted);margin-bottom:1.5rem;font-style:italic}
+.case-body p{font-size:.9rem;margin-bottom:1rem}
+.task-box{background:#F0FDFA;border:1px solid #99F6E4;border-radius:14px;padding:1.5rem;margin:2rem 0}
+.task-box h3{font-size:1.1rem;font-weight:700;color:#0D9488;margin-bottom:.75rem}.task-box p{font-size:.88rem;margin-bottom:.5rem}
+.source-box{background:#F9FAFB;border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;margin-top:2rem;font-size:.82rem;color:var(--muted)}.source-box strong{font-weight:700;color:var(--text)}
+.pr-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem}
+.pr-title{font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+.pr-subtitle{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;font-style:italic}
+.fw-callout{background:var(--accent-light);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:.85rem;color:var(--accent-dark)}.fw-callout strong{font-weight:700}
+.pr-body p{font-size:.9rem;margin-bottom:1.1rem}
+.refs{margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--border)}.refs h3{font-size:1rem;font-weight:700;margin-bottom:.75rem}.refs p{font-size:.82rem;color:var(--muted);margin-bottom:.4rem}
+.rf-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem}
+.rf-title{font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+.rf-subtitle{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem}
+.rf-intro{font-size:.9rem;margin-bottom:2rem;color:var(--muted);font-style:italic}
+.reflection{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;margin-bottom:1.25rem;position:relative}
+.reflection::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:4px 0 0 4px;background:var(--accent)}
+.reflection h3{font-size:1rem;font-weight:700;color:var(--accent-dark);margin-bottom:.75rem}.reflection p{font-size:.88rem;line-height:1.7}
+.footer{max-width:780px;margin:0 auto;padding:1.5rem;text-align:center;font-size:.75rem;color:var(--muted);border-top:1px solid var(--border)}.footer strong{font-weight:700}
+
+/* ── Content Protection ── */
+body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+@media print{body{display:none !important}html::after{content:"Printing is disabled. © 2026 Dr. Hildegard Haas";display:block;padding:3rem;font-size:1.5rem;text-align:center;color:#DC2626;font-family:Arial,sans-serif}}
+img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-drag:none;user-drag:none;pointer-events:none}
+</style>
+</head>
+<body oncopy="return false" oncut="return false" onpaste="return false">
+<div class="back-bar"><div class="back-inner"><a class="back-link" href="../index.html">&larr; Back to Course Overview</a></div></div>
+<div class="teal-bar"></div>
+<header class="page-header"><div class="header-inner">
+  <div class="header-badge">MMGTE301 &middot; Unit 3 &middot; Session Activities</div>
+  <h1>Idea Generation</h1>
+  <p class="header-sub">What we do today &mdash; 150 minutes, 7 phases, no slides</p>
+  <p class="header-copy">&copy; 2026 Dr. Hildegard Haas &middot; EU Business School</p>
+</div></header>
+<div class="teal-bar"></div>
+<main class="main">
+<div class="overview"><h2>Session Overview</h2>
+<div class="ov-row"><span class="ov-phase">Phase 1</span><span class="ov-name">The Idea Drop</span><span class="ov-time">10 min</span></div>
+<div class="ov-row"><span class="ov-phase">Phase 2</span><span class="ov-name">Gallery Exploration</span><span class="ov-time">20 min</span></div>
+<div class="ov-row"><span class="ov-phase">Phase 3</span><span class="ov-name">Framework Pitch</span><span class="ov-time">15 min</span></div>
+<div class="ov-row"><span class="ov-phase">Phase 4</span><span class="ov-name">Case Deep Dive: Airbnb</span><span class="ov-time">40 min</span></div>
+<div class="ov-row"><span class="ov-phase">Phase 5</span><span class="ov-name">Pitch Presentations</span><span class="ov-time">20 min</span></div>
+<div class="ov-row"><span class="ov-phase">&mdash;</span><span class="ov-name">Break</span><span class="ov-time">10 min</span></div>
+<div class="ov-row"><span class="ov-phase">Phase 6</span><span class="ov-name">Second Scenario</span><span class="ov-time">25 min</span></div>
+<div class="ov-row"><span class="ov-phase">Phase 7</span><span class="ov-name">Reflection &amp; Personal Slibrary</span><span class="ov-time">10 min</span></div></div>
+
+<div class="phase"><div class="phase-num">1</div><h3>The Idea Drop</h3><div class="time">10 min</div><p>Your facilitator will present a product that seemed absurd when first proposed &mdash; an idea that every expert said would fail. A provocation about what &ldquo;good ideas&rdquo; actually look like before they succeed.</p><div class="task"><strong>Your task:</strong> Listen. Then consider: what made this idea look bad to experts but obvious in hindsight? The gap between expert rejection and market acceptance is where this unit lives.</div></div>
+
+<div class="phase"><div class="phase-num">2</div><h3>Gallery Exploration</h3><div class="time">20 min</div><p><strong>Open:</strong> Unit 3 Framework Gallery (Slibraries 9&ndash;12). Work <strong>in pairs</strong>.</p><div class="task"><strong>Your task:</strong> Find the 3 frameworks that best explain how ideas move from inception to market adoption. Select from different Slibraries.</div></div>
+
+<div class="phase"><div class="phase-num">3</div><h3>Framework Pitch</h3><div class="time">15 min</div><div class="task"><strong>Your task:</strong> Name your 3 frameworks, state which Slibrary each comes from, and explain your combination in <strong>90 seconds</strong>.</div></div>
+
+<div class="phase"><div class="phase-num">4</div><h3>Case Deep Dive: Airbnb</h3><div class="time">40 min</div><p><strong>Airbnb: From Air Mattresses to a $75 Billion Platform</strong></p><p>Using frameworks from the gallery, map Airbnb&rsquo;s journey from idea to global platform. How did the idea cross the chasm?</p><div class="task"><strong>Your task:</strong> Form teams of 4. Produce a <strong>one-page visual argument</strong> showing: (a) how Airbnb identified the job-to-be-done, (b) how it diffused through adopter categories, and (c) what its MVP looked like.</div></div>
+
+<div class="phase"><div class="phase-num">5</div><h3>Pitch Presentations</h3><div class="time">20 min</div><div class="task"><strong>Your task:</strong> Present your visual argument. <strong>90 seconds</strong>. Focus on the frameworks, not the story.</div></div>
+
+<div class="break-bar">&#9749; Break &mdash; 10 minutes</div>
+
+<div class="phase"><div class="phase-num">6</div><h3>Second Scenario</h3><div class="time">25 min</div><p><em>A team of three university students in Barcelona has developed a prototype app that uses AI to match freelance chefs with households for private dining experiences. They have 200 beta users, a 4.8-star rating, and zero revenue. How do they validate and scale this idea?</em></p><div class="task"><strong>Your task:</strong> Focus on <strong>Slibraries 11 and 12</strong>. Apply the Lean Canvas and Problem-Solution Fit frameworks. What experiment would you run first?</div></div>
+
+<div class="phase"><div class="phase-num">7</div><h3>Reflection &amp; Personal Slibrary</h3><div class="time">10 min</div><p><strong>Individually.</strong> Answer three questions in writing:</p><p><strong>Question 1:</strong> What is the difference between a good idea and a viable venture?</p><p><strong>Question 2:</strong> Which framework from today would you use to test your own business idea?</p><p><strong>Question 3:</strong> Which framework do you not yet fully understand? Write a 200-word explanation.</p></div>
+</main>
+<footer class="footer"><strong>MMGTE301</strong> &middot; Disruptive Entrepreneurship &middot; &copy; 2026 Dr. Hildegard Haas<br>&copy; Dr. Hildegard Haas 2026</footer>
+
+<script>
+// Disable right-click context menu
+document.addEventListener('contextmenu',function(e){e.preventDefault();return false});
+
+// Disable keyboard shortcuts (Ctrl+C, Ctrl+S, Ctrl+U, Ctrl+A, Ctrl+P, F12)
+document.addEventListener('keydown',function(e){
+  if(e.ctrlKey&&['c','C','s','S','u','U','a','A','p','P'].includes(e.key)){e.preventDefault();return false}
+  if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['i','I','j','J'].includes(e.key))){e.preventDefault();return false}
+});
+
+// Disable drag
+document.addEventListener('dragstart',function(e){e.preventDefault();return false});
+
+// Disable copy/cut
+document.addEventListener('copy',function(e){e.preventDefault();return false});
+document.addEventListener('cut',function(e){e.preventDefault();return false});
+</script>
+</body>
+</html>

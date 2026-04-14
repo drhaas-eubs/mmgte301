@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MMGTE301 Unit 2 &mdash; Reflection Prompt</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--accent:#D4872C;--accent-light:#FFF7ED;--accent-dark:#92400E;--bg:#F8FAFC;--text:#1A1A1A;--muted:#6B7280;--border:#E2E8F0;--navy:#1B2A4A;--card:#FFFFFF}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;margin:0}
+.back-bar{background:#F0FDFA;padding:.7rem 0}.back-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.back-link{color:#0D9488;text-decoration:none;font-size:.88rem;font-weight:600;display:inline-flex;align-items:center;gap:.35rem}.back-link:hover{color:#065F46}
+.teal-bar{height:5px;background:#10B981}
+.page-header{background:var(--navy);color:#fff;padding:2.5rem 2rem 2rem}
+.header-inner{max-width:780px;margin:0 auto}
+.header-badge{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#D97706;margin-bottom:.75rem}
+.page-header h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;line-height:1.2;margin-bottom:.5rem}
+.header-sub{font-size:.92rem;color:rgba(255,255,255,.55);margin-bottom:.5rem}
+.header-copy{font-size:.8rem;color:rgba(255,255,255,.3);font-style:italic}
+.main{max-width:780px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.overview{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:2.5rem}
+.overview h2{font-size:1.1rem;font-weight:700;color:var(--accent);margin-bottom:1rem}
+.ov-row{display:flex;align-items:center;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--border);font-size:.85rem}.ov-row:last-child{border-bottom:none}
+.ov-phase{font-weight:700;color:var(--accent);min-width:60px}.ov-name{flex:1}.ov-time{color:var(--muted);font-size:.8rem;min-width:50px;text-align:right}
+.phase{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.75rem;margin-bottom:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.phase-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:1rem;margin-bottom:.75rem}
+.phase h3{font-size:1.15rem;font-weight:700;margin-bottom:.15rem}.phase .time{font-size:.8rem;color:var(--muted);margin-bottom:1rem}.phase p{font-size:.88rem;margin-bottom:.75rem}
+.task{background:#F0FDFA;border-left:3px solid #0D9488;padding:.75rem 1rem;border-radius:0 8px 8px 0;margin:.75rem 0;font-size:.85rem}.task strong{color:#0D9488;font-weight:700}
+.tip{background:#FEFCE8;border:1px solid #FDE68A;border-radius:10px;padding:.75rem 1rem;margin:.75rem 0;font-size:.82rem;color:#78350F}
+.break-bar{display:flex;align-items:center;justify-content:center;gap:.75rem;padding:1rem;margin:1.5rem 0;font-size:.9rem;color:var(--muted)}.break-bar::before,.break-bar::after{content:'';flex:1;height:1px;background:var(--border)}
+.case-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem}
+.case-title{font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+.case-subtitle{font-size:.9rem;color:var(--muted);margin-bottom:1.5rem;font-style:italic}
+.case-body p{font-size:.9rem;margin-bottom:1rem}
+.task-box{background:#F0FDFA;border:1px solid #99F6E4;border-radius:14px;padding:1.5rem;margin:2rem 0}
+.task-box h3{font-size:1.1rem;font-weight:700;color:#0D9488;margin-bottom:.75rem}.task-box p{font-size:.88rem;margin-bottom:.5rem}
+.source-box{background:#F9FAFB;border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;margin-top:2rem;font-size:.82rem;color:var(--muted)}.source-box strong{font-weight:700;color:var(--text)}
+.pr-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem}
+.pr-title{font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+.pr-subtitle{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;font-style:italic}
+.fw-callout{background:var(--accent-light);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:.85rem;color:var(--accent-dark)}.fw-callout strong{font-weight:700}
+.pr-body p{font-size:.9rem;margin-bottom:1.1rem}
+.refs{margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--border)}.refs h3{font-size:1rem;font-weight:700;margin-bottom:.75rem}.refs p{font-size:.82rem;color:var(--muted);margin-bottom:.4rem}
+.rf-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem}
+.rf-title{font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+.rf-subtitle{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem}
+.rf-intro{font-size:.9rem;margin-bottom:2rem;color:var(--muted);font-style:italic}
+.reflection{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;margin-bottom:1.25rem;position:relative}
+.reflection::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:4px 0 0 4px;background:var(--accent)}
+.reflection h3{font-size:1rem;font-weight:700;color:var(--accent-dark);margin-bottom:.75rem}.reflection p{font-size:.88rem;line-height:1.7}
+.footer{max-width:780px;margin:0 auto;padding:1.5rem;text-align:center;font-size:.75rem;color:var(--muted);border-top:1px solid var(--border)}.footer strong{font-weight:700}
+
+/* ── Content Protection ── */
+body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+@media print{body{display:none !important}html::after{content:"Printing is disabled. © 2026 Dr. Hildegard Haas";display:block;padding:3rem;font-size:1.5rem;text-align:center;color:#DC2626;font-family:Arial,sans-serif}}
+img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-drag:none;user-drag:none;pointer-events:none}
+</style>
+</head>
+<body oncopy="return false" oncut="return false" onpaste="return false">
+<div class="back-bar"><div class="back-inner"><a class="back-link" href="../index.html">&larr; Back to Course Overview</a></div></div>
+<div class="teal-bar"></div>
+<header class="page-header"><div class="header-inner">
+  <div class="header-badge">MMGTE301 &middot; Unit 2 &middot; Reflection</div>
+  <h1>The Innovator&rsquo;s Dilemma</h1>
+  <p class="header-sub">Unit 2: The Innovator&rsquo;s Dilemma</p>
+  <p class="header-copy">&copy; 2026 Dr. Hildegard Haas &middot; EU Business School</p>
+</div></header>
+<div class="teal-bar"></div>
+<main class="main">
+<div class="rf-label">Reflection</div>
+<div class="rf-title">Reflection Prompt</div>
+<div class="rf-subtitle">Unit 2: The Innovator&rsquo;s Dilemma</div>
+<p class="rf-intro">Complete these reflections before the next session. Bring your written responses &mdash; they will form the basis of our opening discussion.</p>
+<div class="reflection"><h3>Reflection 1</h3><p>Which of the Five Laws of Disruption did you find most counterintuitive? Why does this law challenge conventional management wisdom, and can you identify a real company currently trapped by it?</p></div>
+<div class="reflection"><h3>Reflection 2</h3><p>Apply the RPV Framework to an organisation you have worked for. What are its core resources, processes, and values? How do these capabilities simultaneously create disabilities that would prevent it from pursuing a disruptive opportunity?</p></div>
+<div class="reflection"><h3>Reflection 3</h3><p>Identify one framework from the gallery that you do not yet fully understand. Return to the gallery, click into the framework, read the definition and source, and write a 200-word explanation in your own words. Bring this to the next session.</p></div>
+</main>
+<footer class="footer"><strong>MMGTE301</strong> &middot; Disruptive Entrepreneurship &middot; &copy; 2026 Dr. Hildegard Haas<br>&copy; Dr. Hildegard Haas 2026</footer>
+
+<script>
+// Disable right-click context menu
+document.addEventListener('contextmenu',function(e){e.preventDefault();return false});
+
+// Disable keyboard shortcuts (Ctrl+C, Ctrl+S, Ctrl+U, Ctrl+A, Ctrl+P, F12)
+document.addEventListener('keydown',function(e){
+  if(e.ctrlKey&&['c','C','s','S','u','U','a','A','p','P'].includes(e.key)){e.preventDefault();return false}
+  if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['i','I','j','J'].includes(e.key))){e.preventDefault();return false}
+});
+
+// Disable drag
+document.addEventListener('dragstart',function(e){e.preventDefault();return false});
+
+// Disable copy/cut
+document.addEventListener('copy',function(e){e.preventDefault();return false});
+document.addEventListener('cut',function(e){e.preventDefault();return false});
+</script>
+</body>
+</html>
